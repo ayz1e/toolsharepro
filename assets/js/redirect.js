@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var password = document.getElementById('password').value;
 
             // Send form data to the backend using Fetch API
-            fetch('https://d1-tutorial.ksrhinebolt.workers.dev/api/login', {
+            fetch('https://d1-prod.ksrhinebolt.workers.dev/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
