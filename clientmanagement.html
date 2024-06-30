@@ -16,13 +16,39 @@
     <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
     <!-- Form Rounded -->
     <link rel="stylesheet" href="./assets/css/stylerounded.css">
+    <style>
+        .tool-card {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 16px;
+            margin: 16px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .tool-card:hover {
+            transform: scale(1.05);
+        }
+        .tool-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .tool-card h5 {
+            margin-top: 15px;
+            font-size: 1.25rem;
+        }
+        .btn-group a {
+            margin: 5px;
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- start wrapper -->
 <div class="wrapper">
 
     <!-- start navbar -->
-    <nav class="main-header navbar navbar-expand-sm navbar-light navbar-dark" >
+    <nav class="main-header navbar navbar-expand-sm navbar-light navbar-dark">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -75,7 +101,7 @@
                     <li class="nav-item">
                         <a href="clientmanagement.html" class="nav-link active">
                             <i class="nav-icon fa fa-copy"></i>
-                            <p>Client Management</p>
+                            <p>Individual Tool Listing</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -150,7 +176,6 @@
         </div>
         <!-- end sidebar -->
 
-
     </aside>
     <!-- end aside container -->
 
@@ -162,12 +187,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Client Management</h1>
+                        <h1 class="m-0">Individual Tool Listing</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Client Management</li>
+                            <li class="breadcrumb-item active">Individual Tool Listings</li>
                         </ol>
                     </div>
                 </div>
@@ -175,344 +200,207 @@
         </div>
         <!-- End Content Header (Page header) -->
 
-
         <!-- Main content -->
         <section class="content">
-            <div class="section-body mt-3">
-                <div class="container-fluid">
-                    <div class="row clearfix">
-                        <div class="col-lg-12">
-                            <div class="card card-gray card-outline">
-                                <div class="card-body">
-                                    <div class="d-md-flex justify-content-between mb-2">
-                                        <ul class="nav nav-tabs b-none">
-                                            <li class="nav-item"><a class="nav-link active" data-toggle="tab"
-                                                    href="#list"><i class="fa fa-users"></i> List of Client</a>
-                                            </li>
-                                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#addnew">
-                                                <i class="fa fa-plus"></i> Add New</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Tools</h3>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section-body">
-                <div class="container-fluid">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="list" role="tabpanel">
-                            <div class="row clearfix">
-                                <div class="col-xl-12 col-lg-12 col-md-12">
-                                    <div class="card card-gray card-outline">
-                                        <div class="content-panel">
-                                            <table class="table table-striped table-advance table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>FirstName</th>
-                                                        <th>MiddleName</th>
-                                                        <th>LastName</th>
-                                                        <th>Address</th>
-                                                        <th>Contact</th>
-                                                        <th>Email</th>
-                                                        <th>Gender</th>
-                                                        <th>Civil Status</th>
-                                                        <th>Birthdate</th>
-                                                        <th>Age</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>
-                                                            
-                                                            <a href="#" class="btn btn-dark btn-xs" data-toggle="modal" data-target="#edit_client"><i class="fa fa-pen"></i></a>
-                                                            <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete"><i class="fa fa-trash"></i></a>
-                                                            
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.tooled-up.com%2Fartwork%2Fprodzoom%2FSTA151621.jpg&f=1&nofb=1&ipt=0c1e6f5619f8d7a66365d21578bcdf0773b8bb57f4450dfe46f3bfb10efd08a2&ipo=images" alt="Hammer" width="200">
+                                            <h5>Hammer</h5>
+                                            <p>Heavy-duty hammer for construction</p>
+                                            <p>Category: Construction</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hide</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.stanleytools.ca%2FNA%2Fproduct%2Fimages%2F3000x3000x96%2F68-012%2F68-012_2.jpg&f=1&nofb=1&ipt=35cd83062847d4803800b06249ef3ef35f54ce96cd111c97a40fa4989c78ee33&ipo=images" alt="Screwdriver" width="200">
+                                            <h5>Screwdriver</h5>
+                                            <p>Philips head screwdriver</p>
+                                            <p>Category: Tools</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc.shld.net%2Frpx%2Fi%2Fs%2Fi%2Fspin%2F10000595%2Fprod_1852417812%3F%3Fhei%3D64%26wid%3D64%26qlt%3D50&f=1&nofb=1&ipt=2cd46f194450909c812863e041b77f85fc002e7b70af2b0f76d5b55409ca6b82&ipo=images" alt="Wrench" width="200">
+                                            <h5>Wrench</h5>
+                                            <p>Adjustable wrench for various sizes</p>
+                                            <p>Category: Tools</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-gccxd7ClZ2A%2FUEb8yJyTlTI%2FAAAAAAAAABE%2FyTWNl37m9IM%2Fs1600%2FDEWALT%2BDC720KA%2BCordless%2B18-Volt.jpg&f=1&nofb=1&ipt=af17641ac34c093039844b34ccc4a060d8a37fed5346f5f8d8f3bebce924bcaa&ipo=images" alt="Drill" width="200">
+                                            <h5>Drill</h5>
+                                            <p>Basic drill for everyday DIY tasks</p>
+                                            <p>Category: Tools</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F31UHPtS01FL.jpg&f=1&nofb=1&ipt=665c5c5d3840da8be0efe9f3fd7600f9f52ea1f7f8ff43b56cf2f108b0c8558c&ipo=images" alt="Saw" width="200">
+                                            <h5>Saw</h5>
+                                            <p>Hand saw for wood cutting</p>
+                                            <p>Category: Tools</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.bhphotovideo.com%2Fimages%2Fimages2500x2500%2Fplatinum_tools_12206c_6_lineman_s_pliers_1238422.jpg&f=1&nofb=1&ipt=4e939f914dedff533e1085774efc741144b4a294ec9e105b7c59986215967268&ipo=images" width="200">
+                                            <h5>Pliers</h5>
+                                            <p>Multi-purpose pliers</p>
+                                            <p>Category: Tools</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi5.walmartimages.com%2Fasr%2F882a83a6-62f8-4cb3-9ca7-8d9e80cbb849_1.80d23b2d5ff91f09ddec10b71d8152d9.jpeg&f=1&nofb=1&ipt=8cdd8ddf4d47fbb5f5eaf56ce5990e58ba4debe20300400b664bb23334e5b36b&ipo=images" alt="Electrical Tape" width="200">
+                                            <h5>Electrical Tape</h5>
+                                            <p>Insulating electrical tape</p>
+                                            <p>Category: Tools</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.u08fRVo0eopOO-iuRKyHiwHaHa%26pid%3DApi&f=1&ipt=1c54f5ad63b527a5978b77e923b1c5be373de0af121256fe7d8d53df8de72529&ipo=images" alt="Sledgehammer" width="200">
+                                            <h5>Sledgehammer</h5>
+                                            <p>Heavy sledgehammer for demolition</p>
+                                            <p>Category: Construction</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc.shld.net%2Frpx%2Fi%2Fs%2Fi%2Fspin%2Fimage%2Fspin_prod_953067512%3F%3Fhei%3D64%26wid%3D64%26qlt%3D50&f=1&nofb=1&ipt=c2cb52163e9bce8a5e76b16e155e98105a8129c2f2464a07c1696410764ec901&ipo=images" alt="Tape Measure" width="200">
+                                            <h5>Tape Measure</h5>
+                                            <p>25-foot tape measure</p>
+                                            <p>Category: Tools</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.EamiLNqoUSc8fSK5B15E-gHaHa%26pid%3DApi&f=1&ipt=ae36dd848034e8e2ebe1d42ee6f523c7525319c404a679d49118b45841b88af9&ipo=images" alt="Band Saw" width="200">
+                                            <h5>Band Saw</h5>
+                                            <p>Portable band saw for metal cutting</p>
+                                            <p>Category: Tools</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.stanleytools.com%2FNA%2Fproduct%2Fimages%2F3000x3000x96%2F16-300%2F16-300_1.jpg&f=1&nofb=1&ipt=d9b9ec0ee921d350d3ea4ee4b7a6b5c6d465e9e76a4d1ba29e4f39aec56b9abb&ipo=images" alt="Chisel" width="200">
+                                            <h5>Chisel</h5>
+                                            <p>Woodworking chisel set</p>
+                                            <p>Category: Woodworking</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn11.bigcommerce.com%2Fs-7holhynnib%2Fimages%2Fstencil%2F1280x1280%2Fproducts%2F56225%2F55280%2F5aafb502e422a700107583fb__51171.1583489766.jpg%3Fc%3D2&f=1&nofb=1&ipt=81ecd959904fdfa57a8617d61ad337f9e485523b81d97521a06f4a252af0410a&ipo=images" alt="Pipe Wrench" width="200">
+                                            <h5>Pipe Wrench</h5>
+                                            <p>Heavy-duty pipe wrench</p>
+                                            <p>Category: Plumbing</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-gccxd7ClZ2A%2FUEb8yJyTlTI%2FAAAAAAAAABE%2FyTWNl37m9IM%2Fs1600%2FDEWALT%2BDC720KA%2BCordless%2B18-Volt.jpg&f=1&nofb=1&ipt=af17641ac34c093039844b34ccc4a060d8a37fed5346f5f8d8f3bebce924bcaa&ipo=images" alt="Cordless Drill" width="200">
+                                            <h5>Cordless Drill</h5>
+                                            <p>18-volt cordless drill</p>
+                                            <p>Category: Tools</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- /.card-body -->
                         </div>
-                        <div class="tab-pane fade" id="addnew" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="card card-gray">
-                                        <div class="card-header">
-                                            <h3 class="card-title"><i class="fa fa-plus"></i> Add Client</h3>
-                                        </div>
-                                        <form class="card-body">
-                                            <div class="row clearfix">
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>First Name</label>
-                                                        <input type="text" class="form-control form-control-sm form-rounded" placeholder="FirstName..." required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Middle Name</label>
-                                                        <input type="text" class="form-control form-control-sm form-rounded" placeholder="MiddleName..." required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Last Name</label>
-                                                        <input type="text" class="form-control form-control-sm form-rounded" placeholder="LastName..." required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Contact</label>
-                                                        <input type="number" class="form-control form-control-sm form-rounded" placeholder="Contact..." required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <div class="form-group">
-                                                        <label>Age</label>
-                                                        <input type="number" class="form-control form-control-sm form-rounded" placeholder="Age..." required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Email</label>
-                                                        <input type="email" class="form-control form-control-sm form-rounded" placeholder="Email..." required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Gender</label>
-                                                        <select class="form-control form-control-sm form-rounded" required>
-                                                            <option>Choose...</option>
-                                                            <option>Male</option>
-                                                            <option>Female</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Civil Status</label>
-                                                        <select class="form-control form-control-sm form-rounded" required>
-                                                            <option>Choose...</option>
-                                                            <option>Single</option>
-                                                            <option>In Relationship</option>
-                                                            <option>Married</option>
-                                                            <option>Complicated</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Birthdate</label>
-                                                        <input type="date" class="form-control form-control-sm form-rounded" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div class="form-group">
-                                                        <label>Address</label>
-                                                        <input type="text" class="form-control form-control-sm form-rounded" placeholder="Address..." required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Username</label>
-                                                        <input type="text" class="form-control form-control-sm form-rounded" placeholder="Username..." required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Password</label>
-                                                        <input type="password" class="form-control form-control-sm form-rounded" placeholder="Password..." required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Account Status</label>
-                                                        <input type="text" class="form-control form-control-sm form-rounded" placeholder="Enter Account Status..." required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Submit</button>
-                                                <button type="submit" class="btn btn-outline-danger"><i class="fa fa-times"></i> Cancel</button>
-                                        </form>
-                                        <div class="card-footer">
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- /.card -->
                     </div>
+                    <!-- /.col -->
                 </div>
+                <!-- /.row -->
             </div>
-            <div id="delete" class="modal fade delete-modal animated rubberBand" role="dialog">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body text-center">
-                            <img src="./assets/img/sent.png" alt="" width="50" height="46">
-                            <h3>Are you sure want to delete this Client?</h3>
-                            <div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal"><i class="fa fa-times"></i> Close</a>
-                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="edit_client" class="modal fade delete-modal animated zoomIn" role="dialog">
-                <div class="modal-dialog modal-dialog-centered modal-xl">
-                    <div class="modal-content">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card card-gray">
-                                    <div class="card-header">
-                                        <h3 class="card-title"><i></i>Update Client</h3>
-                                    </div>
-                                    <form class="card-body">
-                                        <div class="row clearfix">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>First Name</label>
-                                                    <input type="text" class="form-control form-control-sm form-rounded" placeholder="FirstName...">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Middle Name</label>
-                                                    <input type="text" class="form-control form-control-sm form-rounded" placeholder="MiddleName...">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Last Name</label>
-                                                    <input type="text" class="form-control form-control-sm form-rounded" placeholder="LastName...">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label>Contact</label>
-                                                    <input type="number" class="form-control form-control-sm form-rounded" placeholder="Contact...">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div class="form-group">
-                                                    <label>Age</label>
-                                                    <input type="number" class="form-control form-control-sm form-rounded" placeholder="Age...">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="email" class="form-control form-control-sm form-rounded" placeholder="Email...">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Gender</label>
-                                                    <select class="form-control form-control-sm form-rounded">
-                                                        <option>Choose...</option>
-                                                        <option>Male</option>
-                                                        <option>Female</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Civil Status</label>
-                                                    <select class="form-control form-control-sm form-rounded">
-                                                        <option>Choose...</option>
-                                                        <option>Single</option>
-                                                        <option>In Relationship</option>
-                                                        <option>Married</option>
-                                                        <option>Complicated</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Birthdate</label>
-                                                    <input type="date" class="form-control form-control-sm form-rounded">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="form-group">
-                                                    <label>Address</label>
-                                                    <input type="text" class="form-control form-control-sm form-rounded" placeholder="Address...">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Username</label>
-                                                    <input type="text" class="form-control form-control-sm form-rounded" placeholder="Username...">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Password</label>
-                                                    <input type="password" class="form-control form-control-sm form-rounded" placeholder="Password...">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Account Status</label>
-                                                    <input type="text" class="form-control form-control-sm form-rounded" placeholder="Enter Account Status...">
-                                                </div>
-                                            </div>
-                                        </div>
-                                            <button type="submit" class="btn btn-success"><i class="fa fa-edit"></i> Update</button>
-                                            <button type="submit" class="btn btn-outline-danger"><i class="fa fa-times"></i> Cancel</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+            <!-- /.container-fluid -->
         </section>
-        <!-- end main content -->
-
-
+        <!-- /.content -->
     </div>
-    <!-- end wrapper -->
+    <!-- /.wrapper -->
 
-        <!-- jQuery -->
-        <script src="./plugins/jquery/jquery.min.js"></script>
-        <!-- jQuery UI 1.11.4 -->
-        <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <link rel="stylesheet" href="plugins/bootstrap/js/bootstrap.bundle.min.js">
-        <!-- AdminLTE App -->
-        <script src="dist/js/adminlte.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="dist/js/pages/dashboard.js"></script>
-        <script>
-            $.widget.bridge('uibutton', $.ui.button)
-        </script>
-        <script src="./assets/js/lib.vendor.bundle.js"></script>
-        <script src="./assets/js/core.js"></script>
-        <script src="./assets/js/dropify.js"></script>
-        <script src="./assets/js/dropify.min.js"></script>
-
+    <!-- Scripts -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="dist/js/adminlte.min.js"></script>
 </div>
 </body>
 </html>
