@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Get the form element
-    var form = document.getElementById('loginForm');
+    var form = document.getElementById('myForm');
 
     if (form) {
         // Add an event listener to handle form submission
