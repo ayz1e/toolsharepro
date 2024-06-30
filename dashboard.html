@@ -13,6 +13,28 @@
     <link rel="stylesheet" href="./assets/css/adminlte.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
+    <style>
+        .category-card {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 16px;
+            margin: 16px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            background-color: #f1f1f1;
+        }
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+        .category-card h5 {
+            margin-top: 15px;
+            font-size: 1.25rem;
+        }
+        .category-card p {
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- start wrapper -->
@@ -79,45 +101,45 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-				<li class="nav-item">
+                            <li class="nav-item">
                                 <a href="alltools.html" class="nav-link">
                                     <i class="fa fa-envelope-open-text nav-icon"></i>
                                     <p>All Tools</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="*.html" class="nav-link">
+                                <a href="automotivetools.html" class="nav-link">
                                     <i class="fa fa-envelope-open-text nav-icon"></i>
                                     <p>Automotive Tools</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="bikeinformation.html" class="nav-link ">
-                                    <i class="fa fa-info nav-icon"></i>
+                                <a href="electricaltools.html" class="nav-link">
+                                    <i class="fa fa-envelope-open-text nav-icon"></i>
                                     <p>Electrical Tools</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="bikemonitoring.html" class="nav-link">
-                                    <i class="fa fa-tv nav-icon"></i>
+                                <a href="handtools.html" class="nav-link">
+                                    <i class="fa fa-envelope-open-text nav-icon"></i>
                                     <p>Hand Tools</p>
                                 </a>
                             </li>
-							<li class="nav-item">
-                                <a href="bikemonitoring.html" class="nav-link">
-                                    <i class="fa fa-tv nav-icon"></i>
+                            <li class="nav-item">
+                                <a href="outdoortools.html" class="nav-link">
+                                    <i class="fa fa-envelope-open-text nav-icon"></i>
                                     <p>Outdoor Tools</p>
                                 </a>
                             </li>
-							<li class="nav-item">
-                                <a href="bikemonitoring.html" class="nav-link">
-                                    <i class="fa fa-tv nav-icon"></i>
+                            <li class="nav-item">
+                                <a href="powertools.html" class="nav-link">
+                                    <i class="fa fa-envelope-open-text nav-icon"></i>
                                     <p>Power Tools</p>
                                 </a>
                             </li>
-							<li class="nav-item">
-                                <a href="bikemonitoring.html" class="nav-link">
-                                    <i class="fa fa-tv nav-icon"></i>
+                            <li class="nav-item">
+                                <a href="plumbingtools.html" class="nav-link">
+                                    <i class="fa fa-envelope-open-text nav-icon"></i>
                                     <p>Plumbing Tools</p>
                                 </a>
                             </li>
@@ -244,6 +266,66 @@
                     <!-- end col panel 4 -->
 
                 </div>
+
+                <!-- start category cards -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="category-card" style="background-color: #ff9999;">
+                            <h5>Hand Tools</h5>
+                            <p>Includes hammers, screwdrivers, wrenches, and more.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-card" style="background-color: #99ccff;">
+                            <h5>Power Tools</h5>
+                            <p>Includes drills, saws, grinders, and more.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-card" style="background-color: #99ff99;">
+                            <h5>Gardening Tools</h5>
+                            <p>Includes pruning shears, garden hoes, shovels, and more.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-card" style="background-color: #ffcc99;">
+                            <h5>Painting Tools</h5>
+                            <p>Includes putty knives, paint rollers, paintbrushes, and more.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-card" style="background-color: #ff9966;">
+                            <h5>Plumbing Tools</h5>
+                            <p>Includes pipe wrenches, plungers, pipe cutters, and more.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-card" style="background-color: #ccccff;">
+                            <h5>Electrical Tools</h5>
+                            <p>Includes pliers, electrical tape, voltage testers, and more.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-card" style="background-color: #ffccff;">
+                            <h5>Outdoor Tools</h5>
+                            <p>Includes rakes, garden forks, wheelbarrows, and more.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-card" style="background-color: #ffff99;">
+                            <h5>Cleaning Tools</h5>
+                            <p>Includes brooms, mops, vacuums, and more.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="category-card" style="background-color: #ff6666;">
+                            <h5>Safety Equipment</h5>
+                            <p>Includes hard hats, safety glasses, ear protection, and more.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end category cards -->
+                
             </div>
         </section>
         <!-- end main content -->
