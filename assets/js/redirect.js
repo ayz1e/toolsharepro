@@ -38,6 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     } else {
-        console.error('Form with id "loginForm" not found.');
+        console.error('Form with id "myForm" not found.');
     }
 });
