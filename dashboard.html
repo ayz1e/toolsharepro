@@ -10,9 +10,9 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="assets/css/adminlte.css">
+    <link rel="stylesheet" href="./assets/css/adminlte.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="plugins/fontawesome5/css/all.min.css">
+    <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- start wrapper -->
@@ -22,7 +22,7 @@
     <nav class="main-header navbar navbar-expand-sm navbar-light navbar-dark" >
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" style="color:white !important"></i></a>
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
 
@@ -52,10 +52,10 @@
             <!-- start user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="assets/img/avatar.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="./assets/img/avatar.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Welcome!</a>
+                    <a href="#" class="d-block">{customer.name}</a>
                 </div>
             </div>
             <!-- end user panel (optional) -->
@@ -66,19 +66,14 @@
                     <li class="nav-item has-treeview menu-open">
                         <a href="dashboard.html" class="nav-link active">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Dashboard</p>
+                            <p>Tool Categories</p>
                         </a>
                     </li>                            
-                    <li class="nav-item">
-                        <a href="clientmanagement.html" class="nav-link">
-                            <i class="nav-icon fa fa-copy"></i>
-                            <p>Client Management</p>
-                        </a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-biking"></i>
-                            <p>Bike
+                            <p>Tool Pages
                                 <i class="fas fa-angle-left right"></i>
                                 <span class="badge badge-info right"></span>
                             </p>
@@ -87,19 +82,37 @@
                             <li class="nav-item">
                                 <a href="bikecategory.html" class="nav-link">
                                     <i class="fa fa-envelope-open-text nav-icon"></i>
-                                    <p>Category</p>
+                                    <p>Automotive Tools</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="bikeinformation.html" class="nav-link ">
                                     <i class="fa fa-info nav-icon"></i>
-                                    <p>Information</p>
+                                    <p>Electrical Tools</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="bikemonitoring.html" class="nav-link">
                                     <i class="fa fa-tv nav-icon"></i>
-                                    <p>Monitoring</p>
+                                    <p>Hand Tools</p>
+                                </a>
+                            </li>
+							<li class="nav-item">
+                                <a href="bikemonitoring.html" class="nav-link">
+                                    <i class="fa fa-tv nav-icon"></i>
+                                    <p>Outdoor Tools</p>
+                                </a>
+                            </li>
+							<li class="nav-item">
+                                <a href="bikemonitoring.html" class="nav-link">
+                                    <i class="fa fa-tv nav-icon"></i>
+                                    <p>Power Tools</p>
+                                </a>
+                            </li>
+							<li class="nav-item">
+                                <a href="bikemonitoring.html" class="nav-link">
+                                    <i class="fa fa-tv nav-icon"></i>
+                                    <p>Plumbing Tools</p>
                                 </a>
                             </li>
                         </ul>
@@ -107,31 +120,17 @@
                     <li class="nav-item">
                         <a href="rental.html" class="nav-link">
                             <i class="nav-icon fa fa-biking"></i>
-                            <p>Rental</p>
+                            <p>My Reservations</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="payment.html" class="nav-link">
                             <i class="nav-icon fa fa-money-bill"></i>
-                            <p>Payment</p>
+                            <p>Payments</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="usermanagement.html" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>
-                                User Management
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="usergroup.html" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                User Group
-                            </p>
-                        </a>
-                    </li>
+                   
+             
                     <li class="nav-item">
                         <a href="index.html" class="nav-link">
                             <i class="nav-icon fa fa-sign-out-alt"></i>
@@ -183,10 +182,10 @@
                         <div class="small-box bg-gray">
                             <div class="inner">
                                 <h3>150</h3>
-                                <p>Power Tools</p>
+                                <p>Total Client</p>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-tools"></i>
+                                <i class="fa fa-user-ninja"></i>
                             </div>
                             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -198,10 +197,10 @@
                         <div class="small-box bg-green">
                             <div class="inner">
                                 <h3>250</h3>
-                                <p>Hand Tools</p>
+                                <p>Total Bike</p>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-hammer"></i>
+                                <i class="fa fa-biking"></i>
                             </div>
                             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -213,10 +212,10 @@
                         <div class="small-box bg-danger">
                             <div class="inner">
                                 <h3>950</h3>
-                                <p>Yard Tools</p>
+                                <p>Total Rental</p>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-tree"></i>
+                                <i class="fa fa-users"></i>
                             </div>
                             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -228,10 +227,10 @@
                         <div class="small-box bg-yellow">
                             <div class="inner">
                                 <h3>450</h3>
-                                <p>Vehicular Tools</p>
+                                <p>Total Payment</p>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-truck-pickup"></i>
+                                <i class="fa fa-money-bill-wave"></i>
                             </div>
                             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
