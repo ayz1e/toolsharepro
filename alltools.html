@@ -47,8 +47,8 @@
 <!-- start wrapper -->
 <div class="wrapper">
 
-    <!-- start navbar -->
-    <nav class="main-header navbar navbar-expand-sm navbar-light navbar-dark">
+     <!-- start navbar -->
+    <nav class="main-header navbar navbar-expand-sm navbar-light navbar-dark" >
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -71,7 +71,7 @@
         <!-- Brand Logo -->
         <a href="index.html" class="brand-link">
             <span class="brand-text font-weight-light">
-                <h6 align="center"><strong>Bike Rental System</strong></h6>
+                <h6 align="center"><strong>ToolShare Pro</strong></h6>
             </span>
         </a>
 
@@ -84,7 +84,7 @@
                     <img src="./assets/img/avatar.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Welcome!</a>
+                    <a href="#" class="d-block">{customer.name}</a>
                 </div>
             </div>
             <!-- end user panel (optional) -->
@@ -93,42 +93,61 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item has-treeview menu-open">
-                        <a href="dashboard.html" class="nav-link">
+                        <a href="dashboard.html" class="nav-link active">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Dashboard</p>
+                            <p>Tool Categories</p>
                         </a>
                     </li>                            
-                    <li class="nav-item">
-                        <a href="clientmanagement.html" class="nav-link active">
-                            <i class="nav-icon fa fa-copy"></i>
-                            <p>Individual Tool Listing</p>
-                        </a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-biking"></i>
-                            <p>Bike
+                            <p>Tool Pages
                                 <i class="fas fa-angle-left right"></i>
                                 <span class="badge badge-info right"></span>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="bikecategory.html" class="nav-link">
+				<li class="nav-item">
+                                <a href="alltools.html" class="nav-link">
                                     <i class="fa fa-envelope-open-text nav-icon"></i>
-                                    <p>Category</p>
+                                    <p>All Tools</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="*.html" class="nav-link">
+                                    <i class="fa fa-envelope-open-text nav-icon"></i>
+                                    <p>Automotive Tools</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="bikeinformation.html" class="nav-link ">
                                     <i class="fa fa-info nav-icon"></i>
-                                    <p>Information</p>
+                                    <p>Electrical Tools</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="bikemonitoring.html" class="nav-link">
                                     <i class="fa fa-tv nav-icon"></i>
-                                    <p>Monitoring</p>
+                                    <p>Hand Tools</p>
+                                </a>
+                            </li>
+							<li class="nav-item">
+                                <a href="bikemonitoring.html" class="nav-link">
+                                    <i class="fa fa-tv nav-icon"></i>
+                                    <p>Outdoor Tools</p>
+                                </a>
+                            </li>
+							<li class="nav-item">
+                                <a href="bikemonitoring.html" class="nav-link">
+                                    <i class="fa fa-tv nav-icon"></i>
+                                    <p>Power Tools</p>
+                                </a>
+                            </li>
+							<li class="nav-item">
+                                <a href="bikemonitoring.html" class="nav-link">
+                                    <i class="fa fa-tv nav-icon"></i>
+                                    <p>Plumbing Tools</p>
                                 </a>
                             </li>
                         </ul>
@@ -136,31 +155,17 @@
                     <li class="nav-item">
                         <a href="rental.html" class="nav-link">
                             <i class="nav-icon fa fa-biking"></i>
-                            <p>Rental</p>
+                            <p>My Reservations</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="payment.html" class="nav-link">
                             <i class="nav-icon fa fa-money-bill"></i>
-                            <p>Payment</p>
+                            <p>Payments</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="usermanagement.html" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>
-                                User Management
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="usergroup.html" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                User Group
-                            </p>
-                        </a>
-                    </li>
+                   
+             
                     <li class="nav-item">
                         <a href="index.html" class="nav-link">
                             <i class="nav-icon fa fa-sign-out-alt"></i>
