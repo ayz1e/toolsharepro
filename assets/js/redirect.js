@@ -9,35 +9,31 @@ document.addEventListener('DOMContentLoaded', function () {
         // Gather form data
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
-        var remember = document.getElementById('remember').checked;
 
-        // Create an XMLHttpRequest to send the form data
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'dashboard.html', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-        // Define what happens on successful data submission
-        xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 400) {
-                // Redirect to the dashboard page upon successful form submission
+        // Send form data to the backend using Fetch API
+        fetch('https://d1-tutorial.ksrhinebolt.workers.dev/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Redirect to the dashboard page upon successful login
                 window.location.href = 'dashboard.html';
             } else {
-                // Handle error
-                console.error('Form submission failed.');
+                // Handle login failure
+                console.error('Login failed:', data.message);
+                alert('Invalid credentials, please try again.');
             }
-        };
-
-        // Define what happens in case of error
-        xhr.onerror = function () {
-            console.error('Request failed.');
-        };
-
-        // Convert form data to URL-encoded string
-        var urlEncodedData = 'email=' + encodeURIComponent(email) + 
-                             '&password=' + encodeURIComponent(password) + 
-                             '&remember=' + encodeURIComponent(remember);
-
-        // Send the data
-        xhr.send(urlEncodedData);
+        })
+        .catch(error => {
+            console.error('Request failed:', error);
+        });
     });
 });
