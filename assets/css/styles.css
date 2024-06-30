@@ -1,0 +1,181 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    margin: 0;
+    background-color: #353A40;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-size: cover;
+}
+.navbar{margin-bottom: 0px !important}
+
+.navbar-nav.mr-auto .nav-item .nav-link:hover {
+    color: #F8B83E;
+
+}
+.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark .navbar-brand {
+    font-weight: 600;
+}
+#home h1 br {
+    color: #F8B83E;
+}
+
+
+
+
+footer {
+    background-color: #2D2E2F;
+    color: #FFFFFF;
+    background-attachment: fixed;
+    position: static;
+    background-size: cover;
+    width: 100%;
+    z-index: 99;
+    text-align: center;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+    height: 4vh;
+    bottom: 0px;
+    font-size: medium;
+}
+
+.home {
+    display: table;
+    table-layout: fixed;
+    border-spacing: 0 0;
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-image: url(../images/1.jpg);
+    background-attachment: fixed;
+    background-position: 0% 5%;
+}
+.container-fluid .card-body.contact iframe {
+    width: 100%;
+    height: 30vh;
+}
+
+#home h1 {
+    color: #FFFFFF;
+    font-family: Papyrus, Onyx, "MS Serif", "MS Sans Serif", Courier, "Courier New", "Cascadia Code", Candara;
+    font-style: normal;
+    text-align: center;
+    margin-top: 20vh;
+}
+
+#home h2 {
+    text-align: center;
+    font-family: Papyrus, Onyx, "MS Serif", "MS Sans Serif", Courier, "Courier New", "Cascadia Code", Candara;
+    font-style: normal;
+    outline-color: #343a40 !important;
+    border-color: #353a40 !important;
+    padding-top: 5vh;
+}
+#home h2 .btn.btn-success:hover {
+    color: #F8B83E;
+
+
+}
+
+
+#about #about-container {
+    border-radius: 10px;
+    border-color: #FFFFFF;
+    color: #F8B83E;
+    width: 40vw;
+    padding-top: 20vh;
+}
+
+
+
+.page {
+    table-layout: fixed;
+    border-spacing: 0 0;
+    background-color: #FFF;
+    width: 100%;
+    height: 100vh;
+}
+#contact {
+    height: 80vh;
+
+}
+.row .col-xl-6 .container-fluid {
+    width: 80%;
+    background-image: url(url);
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+
+#about .ibe {
+    padding-left: 0px;
+    left: 50%;
+    right: 50%;
+    text-align: center;
+
+}
+
+#home section {
+    text-align: center;
+    height: 90vh;
+}
+.col-xl-4 {
+    text-align: center;
+}
+
+.mb-0 a {
+    color: #FFF !important;
+    font-family: Papyrus, Onyx, "MS Serif", "MS Sans Serif", Courier, "Courier New", "Cascadia Code", Candara;
+    text-decoration: none !important;
+    text-align: center !important;
+}
+
+
+.card-body {
+    text-align: center;
+    background-color: #FCFCFC;
+    color: #000000;
+}
+.container-fluid .card-body.contact .card-text {
+}
+#contactForm .form-group fieldset {
+    padding-left: 0px;
+}
+
+
+
+.mb-0 {
+    text-align: center;
+}
+
+
+.mb-0 a:hover {
+    color: #F8B83E !important;
+}
+
+
+
+@media (max-width:950px){
+#about #about-container {
+    width: 75vw;
+}
+
+
+
+
+
+
+}
+
+.card #headingOne1 {
+    padding-left: 0px;
+}
+#contactForm .form-group fieldset {
+
+}
