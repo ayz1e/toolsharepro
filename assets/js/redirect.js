@@ -1,44 +1,30 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Get the form element
-    var form = document.getElementById('myForm');
+document.getElementById('myForm').addEventListener('submit', async function (event) {
+  event.preventDefault();
 
-    if (form) {
-        // Add an event listener to handle form submission
-        form.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
 
-            // Gather form data
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
+  try {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
 
-            // Send form data to the backend using Fetch API
-            fetch('https://d1-prod.ksrhinebolt.workers.dev/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Redirect to the dashboard page upon successful login
-                    window.location.href = 'dashboard.html';
-                } else {
-                    window.location.href = 'dashboard.html';
-                    // Handle login failure
-                    //console.error('Login failed:', data.message);
-                    //alert('Invalid credentials, please try again.');
-                }
-            })
-            .catch(error => {
-                console.error('Request failed:', error);
-            });
-        });
+    const result = await response.json();
+
+    if (response.ok) {
+      if (result.success) {
+        window.location.href = 'dashboard.html';
+      } else {
+        alert(result.message);
+      }
     } else {
-        console.error('Form with id "myForm" not found.');
+      alert('Login failed.');
     }
+  } catch (error) {
+    console.error('Error:', error);
+  }
 });
