@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+				// Store user information in local storage
+				localStorage.setItem('user', JSON.stringify({ email: email, password: password}))
                 // Redirect to the dashboard page upon successful login
                 window.location.href = 'dashboard.html';
             } else {
