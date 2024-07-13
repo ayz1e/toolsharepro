@@ -4,27 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Safety Equipment</title>
+    <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
     <link rel="stylesheet" href="./assets/css/adminlte.css">
+    <link rel="stylesheet" href="./assets/css/animate.min.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
+    <!-- Form Rounded -->
     <link rel="stylesheet" href="./assets/css/stylerounded.css">
     <style>
-        .profile-card {
+        .tool-card {
             border: 1px solid #ddd;
             border-radius: 15px;
             padding: 16px;
             margin: 16px 0;
+            text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #f1f1f1;
+            transition: transform 0.2s;
         }
-        .profile-card h5 {
+        .tool-card:hover {
+            transform: scale(1.05);
+        }
+        .tool-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .tool-card h5 {
             margin-top: 15px;
             font-size: 1.25rem;
         }
-        .profile-card p {
-            margin: 10px 0;
+        .btn-group a {
+            margin: 5px;
         }
     </style>
 </head>
@@ -197,12 +212,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">User Profile</h1>
+                        <h1 class="m-0">Safety Equipment</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">User Profile</li>
+                            <li class="breadcrumb-item active">Safety Equipment</li>
                         </ol>
                     </div>
                 </div>
@@ -215,69 +230,48 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="profile-card">
-                            <h5>User Information</h5>
-                            <form id="profile-form">
-                                <div class="form-group">
-                                    <label for="email">Email:</label>
-                                    <input type="email" id="email" class="form-control" required>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Safety Equipment</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <!-- Safety equipment example -->
+                                    <div class="col-md-4">
+                                        <div class="tool-card">
+                                            <img src="https://example.com/tool-image.jpg" alt="Safety Equipment" width="200">
+                                            <h5>Safety Equipment Name</h5>
+                                            <p>Description for Safety Equipment</p>
+                                            <p>Category: Safety Equipment</p>
+                                            <div class="btn-group">
+                                                <a href="specifictool.html" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View</a>
+                                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Reserve</a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Repeat for other safety equipment -->
                                 </div>
-                                <div class="form-group">
-                                    <label for="password">Password:</label>
-                                    <input type="password" id="password" class="form-control" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                            </form>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
+                        <!-- /.card -->
                     </div>
+                    <!-- /.col -->
                 </div>
+                <!-- /.row -->
             </div>
+            <!-- /.container-fluid -->
         </section>
+        <!-- /.content -->
     </div>
+    <!-- /.wrapper -->
+
+    <!-- Scripts -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="dist/js/adminlte.min.js"></script>
 </div>
-
-<!-- Scripts -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="dist/js/adminlte.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var user = JSON.parse(localStorage.getItem('user'));
-        if (user) {
-            document.getElementById('email').value = user.email;
-            document.getElementById('password').value = user.password;
-        }
-
-        document.getElementById('profile-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-
-            fetch('https://d1-prod.ksrhinebolt.workers.dev/api/updateUser', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    localStorage.setItem('user', JSON.stringify({ email: email, password: password }));
-                    alert('Profile updated successfully');
-                } else {
-                    alert('Failed to update profile: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Request failed:', error);
-                alert('An error occurred, please try again later.');
-            });
-        });
-    });
-</script>
 </body>
 </html>

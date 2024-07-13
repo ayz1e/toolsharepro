@@ -131,11 +131,11 @@
                                                 <tbody>
                                                     <tr>
                                                         <td><img src="./assets/img/avatar.jpg" alt="AdminLTE Logo" class="brand-image img-square elevation-3" width="40" style="opacity: .8"></td>
-                                                        <td id="fullnameField"></td>
-                                                        <td id="usernameField"></td>
-                                                        <td id="passwordField"></td>
-                                                        <td id="contactField"></td>
-                                                        <td id="emailField"></td>
+                                                        <td>Data</td>
+                                                        <td>Data</td>
+                                                        <td>Data</td>
+                                                        <td>Data</td>
+                                                        <td>Data</td>
                                                         <td>Data</td>
                                                         <td>Data</td>
                                                         <td>Data</td>
@@ -312,13 +312,14 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="dist/js/adminlte.js"></script>
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         var user = JSON.parse(localStorage.getItem('user'));
         if (user) {
-            document.getElementById('emailField').innerHTML = user.email
+            document.querySelector('input[name="email"]').value = user.email;
+            document.querySelector('input[name="password"]').value = user.password;
         }
-	
-	
+    });
+
     document.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault();
         var email = document.querySelector('input[name="email"]').value;
