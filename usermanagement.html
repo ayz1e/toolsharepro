@@ -131,11 +131,11 @@
                                                 <tbody>
                                                     <tr>
                                                         <td><img src="./assets/img/avatar.jpg" alt="AdminLTE Logo" class="brand-image img-square elevation-3" width="40" style="opacity: .8"></td>
-                                                        <td id="fullnameField">Data</td>
-                                                        <td id="usernameField">Data</td>
-                                                        <td id="passwordField">Data</td>
-                                                        <td id="contactField">Data</td>
-                                                        <td id="emailField">Data</td>
+                                                        <td id="fullnameField"></td>
+                                                        <td id="usernameField"></td>
+                                                        <td id="passwordField"></td>
+                                                        <td id="contactField"></td>
+                                                        <td id="emailField"></td>
                                                         <td>Data</td>
                                                         <td>Data</td>
                                                         <td>Data</td>
@@ -315,8 +315,7 @@
 	document.addEventListener('DOMContentLoaded', function() {
         var user = JSON.parse(localStorage.getItem('user'));
         if (user) {
-            document.getElementById('emailField').innerHTML = 
-                '<p>' + user.email + '</p>' +
+            document.getElementById('emailField').innerHTML = user.email
         }
 	
 	
