@@ -131,11 +131,11 @@
                                                 <tbody>
                                                     <tr>
                                                         <td><img src="./assets/img/avatar.jpg" alt="AdminLTE Logo" class="brand-image img-square elevation-3" width="40" style="opacity: .8"></td>
-                                                        <td>Data</td>
-                                                        <td>user.email</td>
-                                                        <td>user.password</td>
-                                                        <td>Data</td>
-                                                        <td>user.email</td>
+                                                        <td id="fullnameField">Data</td>
+                                                        <td id="usernameField">Data</td>
+                                                        <td id="passwordField">Data</td>
+                                                        <td id="contactField">Data</td>
+                                                        <td id="emailField">Data</td>
                                                         <td>Data</td>
                                                         <td>Data</td>
                                                         <td>Data</td>
@@ -312,14 +312,14 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="dist/js/adminlte.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+	document.addEventListener('DOMContentLoaded', function() {
         var user = JSON.parse(localStorage.getItem('user'));
         if (user) {
-            document.querySelector('input[name="email"]').value = user.email;
-            document.querySelector('input[name="password"]').value = user.password;
+            document.getElementById('emailField').innerHTML = 
+                '<p>' + user.email + '</p>' +
         }
-    });
-
+	
+	
     document.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault();
         var email = document.querySelector('input[name="email"]').value;
