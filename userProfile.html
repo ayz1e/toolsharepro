@@ -99,7 +99,7 @@
                 </div>
             </div>
         </div>
-        <section class="content">
+         <section class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -108,11 +108,15 @@
                             <form id="profile-form">
                                 <div class="form-group">
                                     <label for="email">Email:</label>
-                                    <input type="email" id="email" class="form-control" required readonly>
+                                    <input type="email" id="email" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Password:</label>
+                                    <label for="password">New Password:</label>
                                     <input type="password" id="password" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirm New Password:</label>
+                                    <input type="password" id="confirm-password" class="form-control" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save Changes</button>
                             </form>
@@ -132,13 +136,18 @@
         var user = JSON.parse(localStorage.getItem('user'));
         if (user) {
             document.getElementById('email').value = user.email;
-            document.getElementById('password').value = user.password;
         }
 
         document.getElementById('profile-form').addEventListener('submit', function(event) {
             event.preventDefault();
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
 
             fetch('https://d1-prod.ksrhinebolt.workers.dev/api/updateUser', {
                 method: 'POST',
