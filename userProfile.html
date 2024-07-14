@@ -174,8 +174,8 @@
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(responseText, "application/xml");
 
-            const city = xmlDoc.getElementsByTagName("City")[0].textContent;
-            const state = xmlDoc.getElementsByTagName("State")[0].textContent;
+            const city = xmlDoc.getElementsByTagName("City")[0]?.textContent || '';
+            const state = xmlDoc.getElementsByTagName("State")[0]?.textContent || '';
 
             return { city, state };
         } catch (error) {
@@ -250,11 +250,6 @@
                 return;
             }
 
-            if (Zipcode.length !== 5) {
-                alert('Zipcode is not 5 digits');
-                return;
-            }
-
             const updates = { email };
             if (password !== "") {
                 updates.password = password;
@@ -289,5 +284,6 @@
         });
     });
 </script>
+
 </body>
 </html>
