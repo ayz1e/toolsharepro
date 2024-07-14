@@ -13,42 +13,52 @@
     <link rel="stylesheet" href="./assets/css/adminlte.css">
     <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/stylerounded.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .category-card {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 20px;
             margin: 15px;
-            border: 1px solid #ddd;
+            border: none;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             text-align: center;
             text-decoration: none;
-            color: inherit;
-            background-color: #f9f9f9;
-            transition: background-color 0.3s, transform 0.3s;
+            color: #fff;
+            background-color: #007bff;
+            transition: transform 0.3s;
         }
 
+        .category-card.handtools { background-color: #ff5733; }
+        .category-card.powertools { background-color: #33cfff; }
+        .category-card.gardeningtools { background-color: #33ff57; }
+        .category-card.paintingtools { background-color: #ff33a6; }
+        .category-card.plumbingtools { background-color: #ff8f33; }
+        .category-card.electricaltools { background-color: #f3ff33; color: #000; }
+        .category-card.outdoortools { background-color: #8f33ff; }
+        .category-card.cleaningtools { background-color: #33fff3; color: #000; }
+        .category-card.safetyequipment { background-color: #ff3333; }
+
         .category-card:hover {
-            background-color: #e9ecef;
             transform: translateY(-5px);
         }
 
         .category-card-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 10px;
         }
 
         .category-card h5 {
             margin: 10px 0;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
         }
 
         .category-card p {
             margin: 5px 0;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -90,7 +100,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <a href="handtools.html" class="category-card category-card-bg-handtools">
+                                        <a href="handtools.html" class="category-card handtools">
                                             <div class="category-card-icon">
                                                 <i class="fas fa-hammer"></i>
                                             </div>
@@ -99,7 +109,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="powertools.html" class="category-card category-card-bg-powertools">
+                                        <a href="powertools.html" class="category-card powertools">
                                             <div class="category-card-icon">
                                                 <i class="fas fa-tools"></i>
                                             </div>
@@ -108,7 +118,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="gardeningtools.html" class="category-card category-card-bg-gardeningtools">
+                                        <a href="gardeningtools.html" class="category-card gardeningtools">
                                             <div class="category-card-icon">
                                                 <i class="fas fa-seedling"></i>
                                             </div>
@@ -117,7 +127,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="paintingtools.html" class="category-card category-card-bg-paintingtools">
+                                        <a href="paintingtools.html" class="category-card paintingtools">
                                             <div class="category-card-icon">
                                                 <i class="fas fa-paint-roller"></i>
                                             </div>
@@ -126,7 +136,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="plumbingtools.html" class="category-card category-card-bg-plumbingtools">
+                                        <a href="plumbingtools.html" class="category-card plumbingtools">
                                             <div class="category-card-icon">
                                                 <i class="fas fa-wrench"></i>
                                             </div>
@@ -135,7 +145,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="electricaltools.html" class="category-card category-card-bg-electricaltools">
+                                        <a href="electricaltools.html" class="category-card electricaltools">
                                             <div class="category-card-icon">
                                                 <i class="fas fa-bolt"></i>
                                             </div>
@@ -144,7 +154,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="outdoortools.html" class="category-card category-card-bg-outdoortools">
+                                        <a href="outdoortools.html" class="category-card outdoortools">
                                             <div class="category-card-icon">
                                                 <i class="fas fa-tree"></i>
                                             </div>
@@ -153,7 +163,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="cleaningtools.html" class="category-card category-card-bg-cleaningtools">
+                                        <a href="cleaningtools.html" class="category-card cleaningtools">
                                             <div class="category-card-icon">
                                                 <i class="fas fa-broom"></i>
                                             </div>
@@ -162,7 +172,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="safetyequipment.html" class="category-card category-card-bg-safetyequipment">
+                                        <a href="safetyequipment.html" class="category-card safetyequipment">
                                             <div class="category-card-icon">
                                                 <i class="fas fa-hard-hat"></i>
                                             </div>
