@@ -108,7 +108,7 @@
                             <form id="profile-form">
 								<div class="form-group">
                                     <label for="Username">Username:</label>
-                                    <input type="Username" id="Username" class="form-control">
+                                    <input type="Username" id="Username" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email:</label>
@@ -149,6 +149,37 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
 <script>
+	async function getCityState(zipCode) {
+        const userId = 'YOUR_USER_ID'; // Replace with your USPS API User ID
+        const requestXml = `
+            <CityStateLookupRequest USERID="${userId}">
+                <ZipCode ID="0">
+                    <Zip5>${zipCode}</Zip5>
+                </ZipCode>
+            </CityStateLookupRequest>
+        `;
+      
+        const response = await fetch('https://secure.shippingapis.com/ShippingAPI.dll', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                API: 'CityStateLookup',
+                XML: requestXml,
+            })
+        });
+      
+        const responseText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(responseText, "application/xml");
+
+        const city = xmlDoc.getElementsByTagName("City")[0].textContent;
+        const state = xmlDoc.getElementsByTagName("State")[0].textContent;
+
+        return { city, state };
+    }
+	
     document.addEventListener('DOMContentLoaded', function() {
         var user = JSON.parse(localStorage.getItem('user'));
         if (user) {
@@ -163,7 +194,7 @@
 			var Username = document.getElementById('Username').value;
 			var Zipcode = document.getElementById('Zipcode').value;
 
-            if (password !== confirmPassword || password !== "") {
+            if (password !== confirmPassword) {
                 alert('Passwords do not match');
                 return;
             }
