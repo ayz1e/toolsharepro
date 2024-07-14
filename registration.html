@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./assets/css/adminlte.css">
+    <link href="assets/css/bootstrap-4.4.1.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
+</head>
+<body class="hold-transition login-page">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"> 
+        <a class="navbar-brand" href="index.html#home">ToolShare Pro&nbsp;&nbsp;</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> 
+            <span class="navbar-toggler-icon"></span> 
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> 
+                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a> 
+                </li>
+                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> 
+                    <a class="nav-link" href="index.html#about">Services</a> 
+                </li>
+                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> 
+                    <a class="nav-link" href="index.html#contact">Contact</a> 
+                </li>
+                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> 
+                    <a class="nav-link" href="login.html">Login</a> 
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="./index.html"><b>Tool</b>Share</a> <b>Pro</b>
+        </div>
+        <div class="card card-gray-dark card-outline">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">Register a new membership</p>
+                <form id="registrationForm">
+                    <div class="input-group mb-3">
+                        <input type="text" id="username" class="form-control" placeholder="Username" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="email" id="email" class="form-control" placeholder="Email" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" id="password" class="form-control" placeholder="Password" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" id="confirm-password" class="form-control" placeholder="Confirm Password" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" id="zipcode" class="form-control" placeholder="Zipcode" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-map-marker-alt"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-dark btn-block">Register</button>
+                        </div>
+                    </div>
+                </form>
+                <p class="mb-0">
+                    <a href="login.html" class="text-center" style="color: black !important">I already have a membership</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="./plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="./plugins/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- AdminLTE App -->
+    <script src="./assets/js/adminlte.min.js"></script>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const zipcode = document.getElementById('zipcode').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            const registrationData = { username, email, password, zipcode };
+
+            try {
+                const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(registrationData),
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    alert('Registration successful! Please log in.');
+                    window.location.href = 'login.html';
+                } else {
+                    alert('Failed to register: ' + data.message);
+                }
+            } catch (error) {
+                console.error('Request failed:', error);
+                alert('An error occurred, please try again later.');
+            }
+        });
+    </script>
+</body>
+</html>
