@@ -202,35 +202,95 @@
             if(password !== "") {
 				
 		
-			fetch('https://d1-prod.ksrhinebolt.workers.dev/api/updateUser', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-					Username: Username,
-					Zipcode: Zipcode,
-                }),
-            })
-			
-			
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    localStorage.setItem('user', JSON.stringify({ email: email, password: password, Username: Username, Zipcode: Zipcode }));
-                    alert('Profile updated successfully');
-                } else {
-                    alert('Failed to update profile: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Request failed:', error);
-                alert('An error occurred, please try again later.');
-            });
-			
+				fetch('https://d1-prod.ksrhinebolt.workers.dev/api/updateUser', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password,
+					}),
+				})
+
+
+				.then(response => response.json())
+				.then(data => {
+					if (data.success) {
+						localStorage.setItem('user', JSON.stringify({ email: email, password: password }));
+						alert('Profile updated successfully');
+					} else {
+						alert('Failed to update profile: ' + data.message);
+					}
+				})
+				.catch(error => {
+					console.error('Request failed:', error);
+					alert('An error occurred, please try again later.');
+				});
+
 			} //if password close
+			
+			if(Username !== "") {
+				
+		
+				fetch('https://d1-prod.ksrhinebolt.workers.dev/api/updateUser', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						email: email,
+						Username: Username,
+					}),
+				})
+
+
+				.then(response => response.json())
+				.then(data => {
+					if (data.success) {
+						localStorage.setItem('user', JSON.stringify({ email: email, Username: Username }));
+						alert('Profile updated successfully');
+					} else {
+						alert('Failed to update profile: ' + data.message);
+					}
+				})
+				.catch(error => {
+					console.error('Request failed:', error);
+					alert('An error occurred, please try again later.');
+				});
+
+			} //if Username close
+			
+			if(Zipcode !== "") {
+				
+		
+				fetch('https://d1-prod.ksrhinebolt.workers.dev/api/updateUser', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						email: email,
+						Zipcode: Zipcode,
+					}),
+				})
+
+
+				.then(response => response.json())
+				.then(data => {
+					if (data.success) {
+						localStorage.setItem('user', JSON.stringify({ email: email, Zipcode: Zipcode }));
+						alert('Profile updated successfully');
+					} else {
+						alert('Failed to update profile: ' + data.message);
+					}
+				})
+				.catch(error => {
+					console.error('Request failed:', error);
+					alert('An error occurred, please try again later.');
+				});
+
+			} //if Username close
 			
 			
         });
