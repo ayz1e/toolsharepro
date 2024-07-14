@@ -186,7 +186,7 @@
             document.getElementById('email').value = user.email;
         }
 		
-		document.getElementById('Zipode').addEventListener('blur', async function() {
+		document.getElementById('Zipcode').addEventListener('blur', async function() {
             const Zipcode = document.getElementById('Zipcode').value;
             if (Zipcode.length === 5) {
                 const location = await getCityState(Zipcode);
@@ -213,7 +213,7 @@
                 updates.password = password;
             }
             if (Username !== "") {
-                updates.username = username;
+                updates.Username = Username;
             }
             if (Zipcode !== "") {
                 updates.Zipcode = Zipcode;
