@@ -122,6 +122,11 @@
                 return;
             }
 
+            if (zipcode.length !== 5) {
+                alert('Zipcode length is not 5');
+                return;
+            }
+
             const registrationData = { username, email, password, zipcode };
 
             try {
