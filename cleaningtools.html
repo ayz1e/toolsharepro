@@ -2,48 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cleaning Tools</title>
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <title>Dashboard</title>
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Theme style -->
     <link rel="stylesheet" href="./assets/css/adminlte.css">
-    <link rel="stylesheet" href="./assets/css/animate.min.css">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
-    <!-- Form Rounded -->
-    <link rel="stylesheet" href="./assets/css/stylerounded.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        .tool-card {
-            border: 1px solid #ddd;
-            border-radius: 15px;
-            padding: 16px;
-            margin: 16px 0;
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .category-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 250px;
+            height: 150px;
+            margin: 15px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid;
+            border-image: linear-gradient(to bottom right, #007bff, #00bfff) 1;
         }
-        .tool-card:hover {
-            transform: scale(1.05);
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-        .tool-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
+
+        .category-card-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #007bff;
         }
-        .tool-card h5 {
-            margin-top: 15px;
+
+        .category-card h5 {
+            margin: 10px 0;
             font-size: 1.25rem;
+            color: #333;
         }
-        .btn-group a {
-            margin: 5px;
+
+        .category-card p {
+            margin: 5px 0;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .breadcrumb-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: #6c757d;
         }
     </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Navbar and Sidebar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- The rest of your content -->
 <!-- start wrapper -->
 <div class="wrapper">
 
@@ -269,6 +319,8 @@
     <!-- /.wrapper -->
 
     <!-- Scripts -->
+    <script src="./assets/js/loadNavbar.js"></script>
+    <script src="./assets/js/verifyAuth.js"></script>
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="dist/js/adminlte.min.js"></script>
