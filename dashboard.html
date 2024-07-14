@@ -13,57 +13,77 @@
     <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
         .category-card {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            width: 250px;
+            height: 150px;
             margin: 15px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
             text-decoration: none;
-            color: #fff;
-            background-color: #000;
+            color: #333;
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid transparent;
-            position: relative;
-        }
-
-        .category-card:before {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border-radius: 19px;
-            background: linear-gradient(45deg, #ffbf00, #ffc107);
-            z-index: -1;
-            box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
         }
 
         .category-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .category-card-icon {
-            font-size: 3rem;
+            font-size: 2rem;
             margin-bottom: 10px;
-            color: #ffc107;
+            color: #007bff;
         }
 
         .category-card h5 {
             margin: 10px 0;
-            font-size: 1.5rem;
-            color: #ffc107;
+            font-size: 1.25rem;
+            color: #333;
         }
 
         .category-card p {
             margin: 5px 0;
             font-size: 1rem;
+            color: #666;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .breadcrumb-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: #6c757d;
         }
     </style>
 </head>
@@ -103,88 +123,70 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <a href="handtools.html" class="category-card">
-                                            <div class="category-card-icon">
-                                                <i class="fas fa-hammer"></i>
-                                            </div>
-                                            <h5>Hand Tools</h5>
-                                            <p>Includes hammers, screwdrivers, wrenches, and more.</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="powertools.html" class="category-card">
-                                            <div class="category-card-icon">
-                                                <i class="fas fa-tools"></i>
-                                            </div>
-                                            <h5>Power Tools</h5>
-                                            <p>Includes drills, saws, grinders, and more.</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="gardeningtools.html" class="category-card">
-                                            <div class="category-card-icon">
-                                                <i class="fas fa-seedling"></i>
-                                            </div>
-                                            <h5>Gardening Tools</h5>
-                                            <p>Includes pruning shears, garden hoes, shovels, and more.</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="paintingtools.html" class="category-card">
-                                            <div class="category-card-icon">
-                                                <i class="fas fa-paint-roller"></i>
-                                            </div>
-                                            <h5>Painting Tools</h5>
-                                            <p>Includes putty knives, paint rollers, paintbrushes, and more.</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="plumbingtools.html" class="category-card">
-                                            <div class="category-card-icon">
-                                                <i class="fas fa-wrench"></i>
-                                            </div>
-                                            <h5>Plumbing Tools</h5>
-                                            <p>Includes pipe wrenches, plungers, pipe cutters, and more.</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="electricaltools.html" class="category-card">
-                                            <div class="category-card-icon">
-                                                <i class="fas fa-bolt"></i>
-                                            </div>
-                                            <h5>Electrical Tools</h5>
-                                            <p>Includes pliers, electrical tape, voltage testers, and more.</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="outdoortools.html" class="category-card">
-                                            <div class="category-card-icon">
-                                                <i class="fas fa-tree"></i>
-                                            </div>
-                                            <h5>Outdoor Tools</h5>
-                                            <p>Includes rakes, garden forks, wheelbarrows, and more.</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="cleaningtools.html" class="category-card">
-                                            <div class="category-card-icon">
-                                                <i class="fas fa-broom"></i>
-                                            </div>
-                                            <h5>Cleaning Tools</h5>
-                                            <p>Includes brooms, mops, vacuums, and more.</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="safetyequipment.html" class="category-card">
-                                            <div class="category-card-icon">
-                                                <i class="fas fa-hard-hat"></i>
-                                            </div>
-                                            <h5>Safety Equipment</h5>
-                                            <p>Includes hard hats, safety glasses, ear protection, and more.</p>
-                                        </a>
-                                    </div>
+                                <div class="category-list">
+                                    <a href="handtools.html" class="category-card">
+                                        <div class="category-card-icon">
+                                            <i class="fas fa-hammer"></i>
+                                        </div>
+                                        <h5>Hand Tools</h5>
+                                        <p>Includes hammers, screwdrivers, wrenches, and more.</p>
+                                    </a>
+                                    <a href="powertools.html" class="category-card">
+                                        <div class="category-card-icon">
+                                            <i class="fas fa-tools"></i>
+                                        </div>
+                                        <h5>Power Tools</h5>
+                                        <p>Includes drills, saws, grinders, and more.</p>
+                                    </a>
+                                    <a href="gardeningtools.html" class="category-card">
+                                        <div class="category-card-icon">
+                                            <i class="fas fa-seedling"></i>
+                                        </div>
+                                        <h5>Gardening Tools</h5>
+                                        <p>Includes pruning shears, garden hoes, shovels, and more.</p>
+                                    </a>
+                                    <a href="paintingtools.html" class="category-card">
+                                        <div class="category-card-icon">
+                                            <i class="fas fa-paint-roller"></i>
+                                        </div>
+                                        <h5>Painting Tools</h5>
+                                        <p>Includes putty knives, paint rollers, paintbrushes, and more.</p>
+                                    </a>
+                                    <a href="plumbingtools.html" class="category-card">
+                                        <div class="category-card-icon">
+                                            <i class="fas fa-wrench"></i>
+                                        </div>
+                                        <h5>Plumbing Tools</h5>
+                                        <p>Includes pipe wrenches, plungers, pipe cutters, and more.</p>
+                                    </a>
+                                    <a href="electricaltools.html" class="category-card">
+                                        <div class="category-card-icon">
+                                            <i class="fas fa-bolt"></i>
+                                        </div>
+                                        <h5>Electrical Tools</h5>
+                                        <p>Includes pliers, electrical tape, voltage testers, and more.</p>
+                                    </a>
+                                    <a href="outdoortools.html" class="category-card">
+                                        <div class="category-card-icon">
+                                            <i class="fas fa-tree"></i>
+                                        </div>
+                                        <h5>Outdoor Tools</h5>
+                                        <p>Includes rakes, garden forks, wheelbarrows, and more.</p>
+                                    </a>
+                                    <a href="cleaningtools.html" class="category-card">
+                                        <div class="category-card-icon">
+                                            <i class="fas fa-broom"></i>
+                                        </div>
+                                        <h5>Cleaning Tools</h5>
+                                        <p>Includes brooms, mops, vacuums, and more.</p>
+                                    </a>
+                                    <a href="safetyequipment.html" class="category-card">
+                                        <div class="category-card-icon">
+                                            <i class="fas fa-hard-hat"></i>
+                                        </div>
+                                        <h5>Safety Equipment</h5>
+                                        <p>Includes hard hats, safety glasses, ear protection, and more.</p>
+                                    </a>
                                 </div>
                             </div>
                             <!-- /.card-body -->
