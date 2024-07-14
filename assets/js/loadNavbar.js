@@ -15,6 +15,12 @@ async function loadNavbar() {
             document.getElementById('welcome-user').textContent = user.Username;
             document.getElementById('welcome-user-sidebar').textContent = user.Username;
         }
+
+        // Add event listener for logout link
+        document.getElementById('logout-link').addEventListener('click', function() {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        });
     } catch (error) {
         console.error('Error loading navbar:', error);
     }
