@@ -149,7 +149,7 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
 <script>
-	async function getCityState(zipCode) {
+    async function getCityState(zipCode) {
         const userId = '811U6SCDAR409'; // Replace with your USPS API User ID
         const requestXml = `
             <CityStateLookupRequest USERID="${userId}">
@@ -179,14 +179,14 @@
 
         return { city, state };
     }
-	
+
     document.addEventListener('DOMContentLoaded', function() {
         var user = JSON.parse(localStorage.getItem('user'));
         if (user) {
             document.getElementById('email').value = user.email;
         }
-		
-		document.getElementById('Zipcode').addEventListener('blur', async function() {
+        
+        document.getElementById('Zipcode').addEventListener('blur', async function() {
             const Zipcode = document.getElementById('Zipcode').value;
             if (Zipcode.length === 5) {
                 const location = await getCityState(Zipcode);
@@ -200,8 +200,8 @@
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
             var confirmPassword = document.getElementById('confirm-password').value;
-			var Username = document.getElementById('Username').value;
-			var Zipcode = document.getElementById('Zipcode').value;
+            var Username = document.getElementById('Username').value;
+            var Zipcode = document.getElementById('Zipcode').value;
 
             if (password !== confirmPassword) {
                 alert('Passwords do not match');
