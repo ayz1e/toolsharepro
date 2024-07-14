@@ -20,23 +20,45 @@
         .category-card {
             border: 1px solid #ddd;
             border-radius: 15px;
-            padding: 16px;
-            margin: 16px 0;
+            padding: 20px;
+            margin: 20px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
             background-color: #f1f1f1;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .category-card:hover {
             transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
         .category-card h5 {
             margin-top: 15px;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
         }
         .category-card p {
             margin: 10px 0;
+            font-size: 1rem;
         }
+        .category-card-icon {
+            font-size: 2rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .category-card-bg-handtools { background-color: #ff9999; }
+        .category-card-bg-powertools { background-color: #99ccff; }
+        .category-card-bg-gardeningtools { background-color: #99ff99; }
+        .category-card-bg-paintingtools { background-color: #ffcc99; }
+        .category-card-bg-plumbingtools { background-color: #ff9966; }
+        .category-card-bg-electricaltools { background-color: #ccccff; }
+        .category-card-bg-outdoortools { background-color: #ffccff; }
+        .category-card-bg-cleaningtools { background-color: #ffff99; }
+        .category-card-bg-safetyequipment { background-color: #ff6666; }
     </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -89,20 +111,20 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="dashboard.html" class="nav-link active">
-                            <i class="nav-icon fa fa-copy"></i>
+                        <a href="dashboard.html" class="nav-link">
+                            <i class="nav-icon fas fa-wrench"></i>
                             <p>Tool Categories</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-biking"></i>
-                            <p>Tool Pages
-                                <i class="fas fa-angle-left right"></i>
-                                <span class="badge badge-info right"></span>
+                            <i class="nav-icon fas fa-toolbox"></i>
+                            <p>
+                                Tool Pages
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
+                        <ul class="nav nav-treeview" style="padding-left: 20px;">
                             <li class="nav-item">
                                 <a href="alltools.html" class="nav-link">
                                     <i class="fa fa-envelope-open-text nav-icon"></i>
@@ -110,59 +132,77 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="automotivetools.html" class="nav-link">
-                                    <i class="fa fa-envelope-open-text nav-icon"></i>
-                                    <p>Automotive Tools</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="electricaltools.html" class="nav-link">
-                                    <i class="fa fa-envelope-open-text nav-icon"></i>
-                                    <p>Electrical Tools</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="handtools.html" class="nav-link">
-                                    <i class="fa fa-envelope-open-text nav-icon"></i>
+                                    <i class="fa fa-hammer nav-icon"></i>
                                     <p>Hand Tools</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="outdoortools.html" class="nav-link">
-                                    <i class="fa fa-envelope-open-text nav-icon"></i>
-                                    <p>Outdoor Tools</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="powertools.html" class="nav-link">
-                                    <i class="fa fa-envelope-open-text nav-icon"></i>
+                                    <i class="fa fa-tools nav-icon"></i>
                                     <p>Power Tools</p>
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="gardeningtools.html" class="nav-link">
+                                    <i class="fa fa-seedling nav-icon"></i>
+                                    <p>Gardening Tools</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="paintingtools.html" class="nav-link">
+                                    <i class="fa fa-paint-roller nav-icon"></i>
+                                    <p>Painting Tools</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="plumbingtools.html" class="nav-link">
-                                    <i class="fa fa-envelope-open-text nav-icon"></i>
+                                    <i class="fa fa-wrench nav-icon"></i>
                                     <p>Plumbing Tools</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="electricaltools.html" class="nav-link">
+                                    <i class="fa fa-bolt nav-icon"></i>
+                                    <p>Electrical Tools</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="outdoortools.html" class="nav-link">
+                                    <i class="fa fa-tree nav-icon"></i>
+                                    <p>Outdoor Tools</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="cleaningtools.html" class="nav-link">
+                                    <i class="fa fa-broom nav-icon"></i>
+                                    <p>Cleaning Tools</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="safetyequipment.html" class="nav-link">
+                                    <i class="fa fa-hard-hat nav-icon"></i>
+                                    <p>Safety Equipment</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="myreservations.html" class="nav-link">
-                            <i class="nav-icon fa fa-biking"></i>
+                        <a href="userProfile.html" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>User Profile</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="rental.html" class="nav-link">
+                            <i class="nav-icon fas fa-toolbox"></i>
                             <p>My Reservations</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="payments.html" class="nav-link">
+                        <a href="payment.html" class="nav-link">
                             <i class="nav-icon fa fa-money-bill"></i>
                             <p>Payments</p>
-                        </a>
-                    </li>
-					<li class="nav-item">
-                        <a href="userProfile.html" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>My Profile</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -215,75 +255,90 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="category-card" style="background-color: #ff9999;">
+                                        <a href="handtools.html" class="category-card category-card-bg-handtools">
+                                            <div class="category-card-icon">
+                                                <i class="fas fa-hammer"></i>
+                                            </div>
                                             <h5>Hand Tools</h5>
                                             <p>Includes hammers, screwdrivers, wrenches, and more.</p>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="category-card" style="background-color: #99ccff;">
+                                        <a href="powertools.html" class="category-card category-card-bg-powertools">
+                                            <div class="category-card-icon">
+                                                <i class="fas fa-tools"></i>
+                                            </div>
                                             <h5>Power Tools</h5>
                                             <p>Includes drills, saws, grinders, and more.</p>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="category-card" style="background-color: #99ff99;">
+                                        <a href="gardeningtools.html" class="category-card category-card-bg-gardeningtools">
+                                            <div class="category-card-icon">
+                                                <i class="fas fa-seedling"></i>
+                                            </div>
                                             <h5>Gardening Tools</h5>
                                             <p>Includes pruning shears, garden hoes, shovels, and more.</p>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="category-card" style="background-color: #ffcc99;">
+                                        <a href="paintingtools.html" class="category-card category-card-bg-paintingtools">
+                                            <div class="category-card-icon">
+                                                <i class="fas fa-paint-roller"></i>
+                                            </div>
                                             <h5>Painting Tools</h5>
                                             <p>Includes putty knives, paint rollers, paintbrushes, and more.</p>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="category-card" style="background-color: #ff9966;">
+                                        <a href="plumbingtools.html" class="category-card category-card-bg-plumbingtools">
+                                            <div class="category-card-icon">
+                                                <i class="fas fa-wrench"></i>
+                                            </div>
                                             <h5>Plumbing Tools</h5>
                                             <p>Includes pipe wrenches, plungers, pipe cutters, and more.</p>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="category-card" style="background-color: #ccccff;">
+                                        <a href="electricaltools.html" class="category-card category-card-bg-electricaltools">
+                                            <div class="category-card-icon">
+                                                <i class="fas fa-bolt"></i>
+                                            </div>
                                             <h5>Electrical Tools</h5>
                                             <p>Includes pliers, electrical tape, voltage testers, and more.</p>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="category-card" style="background-color: #ffccff;">
+                                        <a href="outdoortools.html" class="category-card category-card-bg-outdoortools">
+                                            <div class="category-card-icon">
+                                                <i class="fas fa-tree"></i>
+                                            </div>
                                             <h5>Outdoor Tools</h5>
                                             <p>Includes rakes, garden forks, wheelbarrows, and more.</p>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="category-card" style="background-color: #ffff99;">
+                                        <a href="cleaningtools.html" class="category-card category-card-bg-cleaningtools">
+                                            <div class="category-card-icon">
+                                                <i class="fas fa-broom"></i>
+                                            </div>
                                             <h5>Cleaning Tools</h5>
                                             <p>Includes brooms, mops, vacuums, and more.</p>
-                                        </div>
+                                        </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="category-card" style="background-color: #ff6666;">
+                                        <a href="safetyequipment.html" class="category-card category-card-bg-safetyequipment">
+                                            <div class="category-card-icon">
+                                                <i class="fas fa-hard-hat"></i>
+                                            </div>
                                             <h5>Safety Equipment</h5>
                                             <p>Includes hard hats, safety glasses, ear protection, and more.</p>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.card-body -->
                         </div>
-						<div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">User Information</h3>
-                            </div>
-                            <div class="card-body">
-                                <div id="user-info">
-                                    <!-- User info will be loaded here -->
-                                </div>
-                                <button id="edit-profile" class="btn btn-primary">Edit Profile</button>
-                            </div>
-                        </div>
-						
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
@@ -297,24 +352,11 @@
     <!-- /.wrapper -->
 
     <!-- Scripts -->
+	<script src="./assets/js/verifyAuth.js"></script>
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="dist/js/adminlte.min.js"></script>
-    <script src="./assets/js/verifyAuth.js"></script>
-	<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var user = JSON.parse(localStorage.getItem('user'));
-        if (user) {
-            document.getElementById('user-info').innerHTML = 
-                '<p>Email: ' + user.email + '</p>' +
-                '<p>Password: ' + user.password + '</p>';
-        }
-
-        document.getElementById('edit-profile').addEventListener('click', function() {
-            window.location.href = 'usermanagement.html';
-        });
-    });
-</script>
+    
 </div>
 </body>
 </html>
