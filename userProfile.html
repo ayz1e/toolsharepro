@@ -250,6 +250,11 @@
                 return;
             }
 
+            if (Zipcode.length !== 5) {
+                alert('Zipcode length is not 5');
+                return;
+            }
+
             const updates = { email };
             if (password !== "") {
                 updates.password = password;
