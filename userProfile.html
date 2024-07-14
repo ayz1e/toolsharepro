@@ -179,6 +179,7 @@
         return { city, state };
     }
 
+    /**
     async function fetchUserDetails(email) {
         const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/getUserDetails', {
             method: 'POST',
@@ -196,7 +197,7 @@
             return null;
         }
     }
-
+**/
     document.addEventListener('DOMContentLoaded', async function() {
         var user = JSON.parse(localStorage.getItem('user'));
         if (user) {
