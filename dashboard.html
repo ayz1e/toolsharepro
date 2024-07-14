@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Dashboard</title>
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Google Font: Source Sans Pro -->
@@ -14,21 +14,41 @@
     <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/stylerounded.css">
     <style>
-        .profile-card {
-            max-width: 600px;
-            margin: 50px auto;
+        .category-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
+            margin: 20px;
             border: 1px solid #ddd;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
             background-color: #f1f1f1;
+            transition: background-color 0.3s, transform 0.3s;
         }
-        .profile-card h5 {
-            margin-top: 15px;
-            font-size: 1.25rem;
+
+        .category-card:hover {
+            background-color: #e9ecef;
+            transform: translateY(-5px);
         }
-        .profile-card p {
+
+        .category-card-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .category-card h5 {
             margin: 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .category-card p {
+            margin: 5px 0;
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -38,10 +58,7 @@
     <div id="navbar-container"></div>
 
     <!-- The rest of your content -->
-
-    <!-- start wrapper -->
     <div class="content-wrapper">
-
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -170,12 +187,11 @@
     <!-- /.wrapper -->
 
     <!-- Scripts -->
-	<script src="./assets/js/loadNavbar.js"></script>
-<script src="./assets/js/verifyAuth.js"></script>
+    <script src="./assets/js/loadNavbar.js"></script>
+    <script src="./assets/js/verifyAuth.js"></script>
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="dist/js/adminlte.min.js"></script>
-    
 </div>
 </body>
 </html>
