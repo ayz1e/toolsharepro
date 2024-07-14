@@ -1,84 +1,64 @@
-   <!-- start navbar -->
-    <nav class="main-header navbar navbar-expand-sm navbar-light navbar-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+<!-- navbar.html -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html#home">ToolShare Pro&nbsp;&nbsp;</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> 
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link" href="index.html#about">Services</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link" href="index.html#contact">Contact</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link" href="login.html">Login</a>
             </li>
         </ul>
+        <span class="navbar-text" id="welcome-user">Welcome!</span>
+    </div>
+</nav>
 
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <!-- end navbar -->
-
-    <!-- start aside container -->
-    <aside class="main-sidebar sidebar-dark-gray elevation-2">
-        <!-- Brand Logo -->
-        <a href="index.html" class="brand-link">
-            <span class="brand-text font-weight-light">
-                <h6 align="center"><strong>ToolShare Pro</strong></h6>
-            </span>
-        </a>
-
-        <!-- start sidebar -->
-        <div class="sidebar">
-            
-            <!-- start user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="./assets/img/avatar.jpg" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="#" class="d-block">Welcome!</a>
-                </div>
+<aside class="main-sidebar sidebar-dark-gray elevation-2">
+    <a href="index.html" class="brand-link">
+        <span class="brand-text font-weight-light">
+            <h6 align="center"><strong>ToolShare Pro</strong></h6>
+        </span>
+    </a>
+    <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="./assets/img/avatar.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
-            <!-- end user panel (optional) -->
-
-            <!-- start navbar -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item">
-                        <a href="dashboard.html" class="nav-link active">
-                            <i class="nav-icon fa fa-copy"></i>
-                            <p>Tool Categories</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="myreservations.html" class="nav-link">
-                            <i class="nav-icon fa fa-biking"></i>
-                            <p>My Reservations</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="payments.html" class="nav-link">
-                            <i class="nav-icon fa fa-money-bill"></i>
-                            <p>Payments</p>
-                        </a>
-                    </li>
-					<li class="nav-item">
-                        <a href="userProfile.html" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>My Profile</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">
-                            <i class="nav-icon fa fa-sign-out-alt"></i>
-                            <p>Logout</p>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <!-- end navbar -->
-
+            <div class="info">
+                <a href="#" id="welcome-user-sidebar" class="d-block">Welcome!</a>
+            </div>
         </div>
-        <!-- end sidebar -->
-
-    </aside>
-    <!-- end aside container -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="userProfile.html" class="nav-link active">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" id="logout-link" class="nav-link">
+                        <i class="nav-icon fa fa-sign-out-alt"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
