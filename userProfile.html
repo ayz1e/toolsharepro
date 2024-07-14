@@ -202,7 +202,7 @@
         var user = JSON.parse(localStorage.getItem('user'));
         if (user) {
             document.getElementById('email').value = user.email;
-
+        /**
             // Fetch and populate other user details
             const userDetails = await fetchUserDetails(user.email);
             if (userDetails) {
@@ -218,7 +218,7 @@
             }
         }
 
-        /**
+
         document.getElementById('Zipcode').addEventListener('blur', async function() {
             const Zipcode = document.getElementById('Zipcode').value;
             if (Zipcode.length === 5) {
