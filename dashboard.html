@@ -26,46 +26,50 @@
         }
 
         .category-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            position: relative;
             width: 250px;
             height: 150px;
             margin: 15px;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            border-radius: 15px;
+            overflow: hidden;
             text-decoration: none;
-            color: #333;
+            color: white;
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid;
-            border-image: linear-gradient(to bottom right, #007bff, #00bfff) 1;
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .category-card-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #007bff;
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s;
         }
 
-        .category-card h5 {
-            margin: 10px 0;
-            font-size: 1.25rem;
-            color: #333;
+        .category-card:hover img {
+            opacity: 0.3;
         }
 
-        .category-card p {
-            margin: 5px 0;
+        .category-card-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .category-card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .category-card-info {
+            display: none;
             font-size: 1rem;
-            color: #666;
+        }
+
+        .category-card:hover .category-card-info {
+            display: block;
         }
 
         .card-header h3 {
@@ -126,67 +130,67 @@
                             <div class="card-body">
                                 <div class="category-list">
                                     <a href="handtools.html" class="category-card">
-                                        <div class="category-card-icon">
-                                            <i class="fas fa-hammer"></i>
+                                        <img src="./assets/img/handtools.jpg" alt="Hand Tools">
+                                        <div class="category-card-content">
+                                            <div class="category-card-title">Hand Tools</div>
+                                            <div class="category-card-info">Hammers, screwdrivers, wrenches, and more.</div>
                                         </div>
-                                        <h5>Hand Tools</h5>
-                                        <p>hammers, screwdrivers, wrenches, and more.</p>
                                     </a>
                                     <a href="powertools.html" class="category-card">
-                                        <div class="category-card-icon">
-                                            <i class="fas fa-tools"></i>
+                                        <img src="./assets/img/powertools.jpg" alt="Power Tools">
+                                        <div class="category-card-content">
+                                            <div class="category-card-title">Power Tools</div>
+                                            <div class="category-card-info">Drills, saws, grinders, and more.</div>
                                         </div>
-                                        <h5>Power Tools</h5>
-                                        <p>drills, saws, grinders, and more.</p>
                                     </a>
                                     <a href="gardeningtools.html" class="category-card">
-                                        <div class="category-card-icon">
-                                            <i class="fas fa-seedling"></i>
+                                        <img src="./assets/img/gardeningtools.jpg" alt="Gardening Tools">
+                                        <div class="category-card-content">
+                                            <div class="category-card-title">Gardening Tools</div>
+                                            <div class="category-card-info">Pruning shears, garden hoes, shovels, and more.</div>
                                         </div>
-                                        <h5>Gardening Tools</h5>
-                                        <p>Includes pruning shears, garden hoes, shovels, and more.</p>
                                     </a>
                                     <a href="paintingtools.html" class="category-card">
-                                        <div class="category-card-icon">
-                                            <i class="fas fa-paint-roller"></i>
+                                        <img src="./assets/img/paintingtools.jpg" alt="Painting Tools">
+                                        <div class="category-card-content">
+                                            <div class="category-card-title">Painting Tools</div>
+                                            <div class="category-card-info">Putty knives, paint rollers, paintbrushes, and more.</div>
                                         </div>
-                                        <h5>Painting Tools</h5>
-                                        <p>putty knives, paint rollers, paintbrushes, and more.</p>
                                     </a>
                                     <a href="plumbingtools.html" class="category-card">
-                                        <div class="category-card-icon">
-                                            <i class="fas fa-wrench"></i>
+                                        <img src="./assets/img/plumbingtools.jpg" alt="Plumbing Tools">
+                                        <div class="category-card-content">
+                                            <div class="category-card-title">Plumbing Tools</div>
+                                            <div class="category-card-info">Pipe wrenches, plungers, pipe cutters, and more.</div>
                                         </div>
-                                        <h5>Plumbing Tools</h5>
-                                        <p>pipe wrenches, plungers, pipe cutters, and more.</p>
                                     </a>
                                     <a href="electricaltools.html" class="category-card">
-                                        <div class="category-card-icon">
-                                            <i class="fas fa-bolt"></i>
+                                        <img src="./assets/img/electricaltools.jpg" alt="Electrical Tools">
+                                        <div class="category-card-content">
+                                            <div class="category-card-title">Electrical Tools</div>
+                                            <div class="category-card-info">Pliers, electrical tape, voltage testers, and more.</div>
                                         </div>
-                                        <h5>Electrical Tools</h5>
-                                        <p>pliers, electrical tape, voltage testers, and more.</p>
                                     </a>
                                     <a href="outdoortools.html" class="category-card">
-                                        <div class="category-card-icon">
-                                            <i class="fas fa-tree"></i>
+                                        <img src="./assets/img/outdoortools.jpg" alt="Outdoor Tools">
+                                        <div class="category-card-content">
+                                            <div class="category-card-title">Outdoor Tools</div>
+                                            <div class="category-card-info">Rakes, garden forks, wheelbarrows, and more.</div>
                                         </div>
-                                        <h5>Outdoor Tools</h5>
-                                        <p>rakes, garden forks, wheelbarrows, and more.</p>
                                     </a>
                                     <a href="cleaningtools.html" class="category-card">
-                                        <div class="category-card-icon">
-                                            <i class="fas fa-broom"></i>
+                                        <img src="./assets/img/cleaningtools.jpg" alt="Cleaning Tools">
+                                        <div class="category-card-content">
+                                            <div class="category-card-title">Cleaning Tools</div>
+                                            <div class="category-card-info">Brooms, mops, vacuums, and more.</div>
                                         </div>
-                                        <h5>Cleaning Tools</h5>
-                                        <p>brooms, mops, vacuums, and more.</p>
                                     </a>
                                     <a href="safetyequipment.html" class="category-card">
-                                        <div class="category-card-icon">
-                                            <i class="fas fa-hard-hat"></i>
+                                        <img src="./assets/img/safetyequipment.jpg" alt="Safety Equipment">
+                                        <div class="category-card-content">
+                                            <div class="category-card-title">Safety Equipment</div>
+                                            <div class="category-card-info">Hard hats, safety glasses, ear protection, and more.</div>
                                         </div>
-                                        <h5>Safety Equipment</h5>
-                                        <p>hard hats, safety glasses, ear protection, and more.</p>
                                     </a>
                                 </div>
                             </div>
