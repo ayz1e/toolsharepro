@@ -1,4 +1,3 @@
-// loadNavbar.js
 async function loadNavbar() {
     console.log('Loading navbar...');
     try {
@@ -11,9 +10,8 @@ async function loadNavbar() {
 
         // Set the username in the navbar and sidebar
         const user = JSON.parse(localStorage.getItem('user'));
-        if (user && user.Username) {
-            document.getElementById('welcome-user').textContent = user.Username;
-            document.getElementById('welcome-user-sidebar').textContent = user.Username;
+        if (user && user.email) {
+            document.getElementById('welcome-user').textContent = user.email;
         }
 
         // Add event listener for logout link
