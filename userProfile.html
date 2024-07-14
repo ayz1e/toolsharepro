@@ -202,7 +202,8 @@
         var user = JSON.parse(localStorage.getItem('user'));
         if (user) {
             document.getElementById('email').value = user.email;
-        /**
+        }
+            /**
             // Fetch and populate other user details
             const userDetails = await fetchUserDetails(user.email);
             if (userDetails) {
