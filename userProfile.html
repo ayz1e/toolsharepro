@@ -15,365 +15,86 @@
     <style>
         .profile-card {
             max-width: 600px;
-            margin: 20px auto;
+            margin: 50px auto;
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-color: #f1f1f1;
         }
-        .tool-card {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #f1f1f1;
-        }
-        .tool-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .tool-list-item {
-            width: 300px;
-            margin: 15px;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .tool-list-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        .tool-list-item h5 {
-            margin: 10px 0;
+        .profile-card h5 {
+            margin-top: 15px;
             font-size: 1.25rem;
-            color: #333;
         }
-        .tool-list-item p {
-            margin: 5px 0;
-            font-size: 1rem;
-            color: #666;
+        .profile-card p {
+            margin: 10px 0;
         }
     </style>
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-    <!-- Navbar and Sidebar Container -->
-    <div id="navbar-container"></div>
-
-    <!-- The rest of your content -->
-    <div class="content-wrapper">
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">User Profile</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">User Profile</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
+	@@ -55,45 +86,78 @@ <h1 class="m-0">User Profile</h1>
         </div>
         <section class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="profile-card">
-                            <form id="profile-form">
-                                <div class="form-group">
-                                    <label for="username">Username:</label>
-                                    <input type="text" id="username" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email:</label>
-                                    <input type="email" id="email" class="form-control" required readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">New Password:</label>
-                                    <input type="password" id="password" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="confirm-password">Confirm New Password:</label>
-                                    <input type="password" id="confirm-password" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="zipcode">Zipcode:</label>
-                                    <input type="text" id="zipcode" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="city">City:</label>
-                                    <input type="text" id="city" class="form-control" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="state">State:</label>
-                                    <input type="text" id="state" class="form-control" readonly>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                            </form>
+                <div class="profile-card">
+                    <form id="profile-form">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" class="form-control">
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="tool-card">
-                            <h5>Add a New Tool</h5>
-                            <form id="add-tool-form">
-                                <div class="form-group">
-                                    <label for="toolName">Tool Name:</label>
-                                    <input type="text" id="toolName" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="toolCategory">Category:</label>
-                                    <select id="toolCategory" class="form-control" required>
-                                        <option value="Hand">Hand Tools</option>
-                                        <option value="Power">Power Tools</option>
-                                        <option value="Gardening">Gardening Tools</option>
-                                        <option value="Painting">Painting Tools</option>
-                                        <option value="Plumbing">Plumbing Tools</option>
-                                        <option value="Electrical">Electrical Tools</option>
-                                        <option value="Outdoor">Outdoor Tools</option>
-                                        <option value="Cleaning">Cleaning Tools</option>
-                                        <option value="Safety">Safety Equipment</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Add Tool</button>
-                            </form>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" class="form-control" required readonly>
                         </div>
-                        <div class="tool-card">
-                            <h5>Your Tools</h5>
-                            <div id="tool-list" class="tool-list"></div>
+                        <div class="form-group">
+                            <label for="password">New Password:</label>
+                            <input type="password" id="password" class="form-control">
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm New Password:</label>
+                            <input type="password" id="confirm-password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="zipcode">Zipcode:</label>
+                            <input type="text" id="zipcode" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City:</label>
+                            <input type="text" id="city" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State:</label>
+                            <input type="text" id="state" class="form-control" readonly>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
                 </div>
             </div>
         </section>
     </div>
 </div>
 
+
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
-<script src="./assets/js/verifyAuth.js"></script>
-<script src="./assets/js/loadNavbar.js"></script>
-<script>
-    async function getCityState(zipCode) {
-        try {
-            const userId = '811U6SCDAR409'; // Replace with your USPS API User ID
-            const requestXml = `
-                <CityStateLookupRequest USERID="${userId}">
-                    <ZipCode ID="0">
-                        <Zip5>${zipCode}</Zip5>
-                    </ZipCode>
-                </CityStateLookupRequest>
-            `;
-        
-            const response = await fetch('https://secure.shippingapis.com/ShippingAPI.dll', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    API: 'CityStateLookup',
-                    XML: requestXml,
-                })
-            });
-        
-            const responseText = await response.text();
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(responseText, "application/xml");
-
-            const city = xmlDoc.getElementsByTagName("City")[0]?.textContent || '';
-            const state = xmlDoc.getElementsByTagName("State")[0]?.textContent || '';
-
-            return { city, state };
-        } catch (error) {
-            console.error('Error fetching city and state:', error);
-            return { city: '', state: '' };
-        }
-    }
-
-    async function fetchUserDetails(email) {
-        try {
-            const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/getUserDetails', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
-
-            const data = await response.json();
-            if (data.success) {
-                return data.user;
-            } else {
-                console.error('Failed to fetch user details:', data.message);
-                return null;
-            }
-        } catch (error) {
-            console.error('Error fetching user details:', error);
-            return null;
-        }
-    }
-
-    async function fetchUserTools(userId) {
-        try {
-            const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/getUserTools', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ userId }),
-            });
-
-            const data = await response.json();
-            if (data.success) {
-                return data.tools;
-            } else {
-                console.error('Failed to fetch user tools:', data.message);
-                return [];
-            }
-        } catch (error) {
-            console.error('Error fetching user tools:', error);
-            return [];
+	@@ -159,6 +223,29 @@ <h1 class="m-0">User Profile</h1>
         }
     }
 
     document.addEventListener('DOMContentLoaded', async function() {
         var user = JSON.parse(localStorage.getItem('user'));
         if (user) {
-            document.getElementById('email').value = user.email;
-
-            // Fetch and populate other user details
-            const userDetails = await fetchUserDetails(user.email);
-            if (userDetails) {
-                document.getElementById('username').value = userDetails.username || '';
-                document.getElementById('zipcode').value = userDetails.zipcode || '';
-
-                // Fetch and populate city and state based on the Zipcode
-                if (userDetails.zipcode) {
-                    const location = await getCityState(userDetails.zipcode);
+	@@ -176,9 +263,19 @@ <h1 class="m-0">User Profile</h1>
                     document.getElementById('city').value = location.city;
                     document.getElementById('state').value = location.state;
                 }
-
-                // Fetch and display user's tools
-                const tools = await fetchUserTools(userDetails.userId);
-                const toolList = document.getElementById('tool-list');
-                tools.forEach(tool => {
-                    const toolCard = document.createElement('div');
-                    toolCard.className = 'tool-list-item';
-                    toolCard.innerHTML = `<h5>${tool.name}</h5><p>Category: ${tool.category}</p>`;
-                    toolList.appendChild(toolCard);
-                });
             }
         }
-
+        
         document.getElementById('zipcode').addEventListener('blur', async function() {
             const zipcode = document.getElementById('zipcode').value;
             if (zipcode.length === 5) {
-                const location = await getCityState(zipcode);
-                document.getElementById('city').value = location.city;
-                document.getElementById('state').value = location.state;
-            }
-        });
-
-        document.getElementById('profile-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
-
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirm-password').value;
-            var username = document.getElementById('username').value;
-            var zipcode = document.getElementById('zipcode').value;
-
-            if (password !== confirmPassword) {
-                alert('Passwords do not match');
-                return;
-            }
-
-            if (zipcode.length !== 5) {
-                alert('Zipcode length is not 5');
-                return;
-            }
-
-            const updates = { email };
-            if (password !== "") {
-                updates.password = password;
-            }
-            if (username !== "") {
-                updates.username = username;
-            }
-            if (zipcode !== "") {
-                updates.zipcode = zipcode;
-            }
-
-            try {
-                const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/updateUser', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(updates),
-                });
-
-                const data = await response.json();
-                if (data.success) {
-                    localStorage.setItem('user', JSON.stringify({ email, ...updates }));
-                    alert('Profile updated successfully');
-                } else {
-                    alert('Failed to update profile: ' + data.message);
-                }
-            } catch (error) {
-                console.error('Request failed:', error);
+	@@ -239,6 +336,43 @@ <h1 class="m-0">User Profile</h1>
                 alert('An error occurred, please try again later.');
             }
         });
-
-        document.getElementById('add-tool-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
-
-            const toolName = document.getElementById('toolName').value;
-            const toolCategory = document.getElementById('toolCategory').value;
-            const userId = JSON.parse(localStorage.getItem('user')).userId;
-
-            const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/addTool', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: toolName,
-                    category: toolCategory,
-                    userId: userId,
-                }),
-            });
-
-            const data = await response.json();
-            if (data.success) {
-                alert('Tool added successfully');
-                // Reload tools list
-                const tools = await fetchUserTools(userId);
-                const toolList = document.getElementById('tool-list');
-                toolList.innerHTML = ''; // Clear existing tools
-                tools.forEach(tool => {
-                    const toolCard = document.createElement('div');
-                    toolCard.className = 'tool-list-item';
-                    toolCard.innerHTML = `<h5>${tool.name}</h5><p>Category: ${tool.category}</p>`;
-                    toolList.appendChild(toolCard);
-                });
-            } else {
-                alert('Failed to add tool: ' + data.message);
-            }
-        });
-    });
-</script>
-</body>
-</html>
