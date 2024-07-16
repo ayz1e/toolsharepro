@@ -35,7 +35,6 @@
 <div class="wrapper">
     <!-- Navbar and Sidebar Container -->
     <div id="navbar-container"></div>
-
     <!-- The rest of your content -->
     <div class="content-wrapper">
         <div class="content-header">
@@ -64,8 +63,8 @@
                         <div class="form-group">
                             <label for="tool-category">Category:</label>
                             <select id="tool-category" class="form-control" required>
-                                <option value="hand">Hand Tools</option>
-                                <option value="power">Power Tools</option>
+                                <option value="Hand">Hand Tools</option>
+                                <option value="Power">Power Tools</option>
                                 <option value="gardening">Gardening Tools</option>
                                 <option value="painting">Painting Tools</option>
                                 <option value="plumbing">Plumbing Tools</option>
@@ -78,7 +77,6 @@
                         <button type="submit" class="btn btn-primary">Add Tool</button>
                     </form>
                 </div>
-
                 <div class="tool-card">
                     <form id="remove-tool-form">
                         <div class="form-group">
@@ -88,7 +86,6 @@
                         <button type="submit" class="btn btn-danger">Remove Tool</button>
                     </form>
                 </div>
-
                 <div class="tool-card">
                     <h5>My Tools</h5>
                     <div id="my-tools-list"></div>
@@ -97,7 +94,6 @@
         </section>
     </div>
 </div>
-
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
@@ -106,7 +102,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', async function () {
         const user = JSON.parse(localStorage.getItem('user'));
-
         const fetchUserTools = async () => {
             try {
                 const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/getUserTools', {
@@ -116,7 +111,6 @@
                     },
                     body: JSON.stringify({ userId: user.userId }),
                 });
-
                 const data = await response.json();
                 if (data.success) {
                     const toolsList = document.getElementById('my-tools-list');
@@ -133,13 +127,10 @@
                 console.error('Request failed:', error);
             }
         };
-
         document.getElementById('add-tool-form').addEventListener('submit', async function (event) {
             event.preventDefault();
-
             const toolName = document.getElementById('tool-name').value;
             const toolCategory = document.getElementById('tool-category').value;
-
             try {
                 const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/addTool', {
                     method: 'POST',
@@ -148,7 +139,6 @@
                     },
                     body: JSON.stringify({ name: toolName, category: toolCategory, userId: user.userId }),
                 });
-
                 const data = await response.json();
                 if (data.success) {
                     alert('Tool added successfully');
@@ -161,12 +151,9 @@
                 alert('An error occurred, please try again later.');
             }
         });
-
         document.getElementById('remove-tool-form').addEventListener('submit', async function (event) {
             event.preventDefault();
-
             const toolName = document.getElementById('remove-tool-name').value;
-
             try {
                 const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/removeTool', {
                     method: 'POST',
@@ -175,7 +162,6 @@
                     },
                     body: JSON.stringify({ name: toolName, userId: user.userId }),
                 });
-
                 const data = await response.json();
                 if (data.success) {
                     alert('Tool removed successfully');
@@ -188,7 +174,6 @@
                 alert('An error occurred, please try again later.');
             }
         });
-
         fetchUserTools();
     });
 </script>
