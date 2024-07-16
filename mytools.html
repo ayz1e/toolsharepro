@@ -108,8 +108,8 @@
                             <h5>Remove a Tool</h5>
                             <form id="remove-tool-form">
                                 <div class="form-group">
-                                    <label for="toolId">Tool ID:</label>
-                                    <input type="text" id="toolId" class="form-control" required>
+                                    <label for="toolNameToRemove">Tool Name:</label>
+                                    <input type="text" id="toolNameToRemove" class="form-control" required>
                                 </div>
                                 <button type="submit" class="btn btn-danger">Remove Tool</button>
                             </form>
@@ -210,7 +210,7 @@
         document.getElementById('remove-tool-form').addEventListener('submit', async function(event) {
             event.preventDefault();
 
-            const toolId = document.getElementById('toolId').value;
+            const toolName = document.getElementById('toolNameToRemove').value;
             const userId = JSON.parse(localStorage.getItem('user')).userId;
 
             const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/removeTool', {
@@ -219,7 +219,7 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    toolId: toolId,
+                    toolName: toolName,
                     userId: userId,
                 }),
             });
