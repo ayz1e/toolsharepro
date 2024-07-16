@@ -87,7 +87,10 @@
                     const toolCard = document.createElement('div');
                     toolCard.className = 'tool-card';
                     toolCard.innerHTML = `<h5>${tool.name}</h5>`;
-                    toolCard.onclick = () => window.location.href = `tool.html?id=${tool.toolId}`;
+                    toolCard.onclick = () => {
+                        console.log('Clicked tool ID:', tool.toolId); // Debugging line
+                        window.location.href = `tool.html?id=${tool.toolId}`;
+                    };
                     toolList.appendChild(toolCard);
                 });
             })
