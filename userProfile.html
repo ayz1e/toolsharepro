@@ -59,8 +59,8 @@
                 <div class="profile-card">
                     <form id="profile-form">
                         <div class="form-group">
-                            <label for="Username">Username:</label>
-                            <input type="text" id="Username" class="form-control">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
@@ -127,8 +127,8 @@
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(responseText, "application/xml");
 
-            const city = xmlDoc.getElementsByTagName("City")[0]?.textContent || '';
-            const state = xmlDoc.getElementsByTagName("State")[0]?.textContent || '';
+            const city = xmlDoc.getElementsByTagName("city")[0]?.textContent || '';
+            const state = xmlDoc.getElementsByTagName("state")[0]?.textContent || '';
 
             return { city, state };
         } catch (error) {
@@ -168,22 +168,22 @@
             // Fetch and populate other user details
             const userDetails = await fetchUserDetails(user.email);
             if (userDetails) {
-                document.getElementById('Username').value = userDetails.Username || '';
-                document.getElementById('Zipcode').value = userDetails.Zipcode || '';
+                document.getElementById('username').value = userDetails.username || '';
+                document.getElementById('zipcode').value = userDetails.zipcode || '';
 
                 // Fetch and populate city and state based on the Zipcode
-                if (userDetails.Zipcode) {
-                    const location = await getCityState(userDetails.Zipcode);
+                if (userDetails.zipcode) {
+                    const location = await getCityState(userDetails.zipcode);
                     document.getElementById('city').value = location.city;
                     document.getElementById('state').value = location.state;
                 }
             }
         }
         
-        document.getElementById('Zipcode').addEventListener('blur', async function() {
-            const Zipcode = document.getElementById('Zipcode').value;
-            if (Zipcode.length === 5) {
-                const location = await getCityState(Zipcode);
+        document.getElementById('zipcode').addEventListener('blur', async function() {
+            const zipcode = document.getElementById('zipcode').value;
+            if (zipcode.length === 5) {
+                const location = await getCityState(zipcode);
                 document.getElementById('city').value = location.city;
                 document.getElementById('state').value = location.state;
             }
@@ -195,16 +195,16 @@
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
             var confirmPassword = document.getElementById('confirm-password').value;
-            var Username = document.getElementById('Username').value;
-            var Zipcode = document.getElementById('Zipcode').value;
+            var username = document.getElementById('username').value;
+            var zipcode = document.getElementById('zipcode').value;
 
             if (password !== confirmPassword) {
                 alert('Passwords do not match');
                 return;
             }
 
-            if (Zipcode.length !== 5) {
-                alert('Zipcode length is not 5');
+            if (zipcode.length !== 5) {
+                alert('zipcode length is not 5');
                 return;
             }
 
@@ -212,11 +212,11 @@
             if (password !== "") {
                 updates.password = password;
             }
-            if (Username !== "") {
-                updates.Username = Username;
+            if (username !== "") {
+                updates.username = username;
             }
-            if (Zipcode !== "") {
-                updates.Zipcode = Zipcode;
+            if (zipcode !== "") {
+                updates.zipcode = zipcode;
             }
 
             try {
