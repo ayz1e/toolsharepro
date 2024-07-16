@@ -142,3 +142,27 @@
             if (!userId) {
                 alert('User not logged in');
                 return;
+            }
+
+            const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/removeTool', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: toolName,
+                    userId: userId,
+                }),
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                alert('Tool removed successfully');
+            } else {
+                alert('Failed to remove tool: ' + data.message);
+            }
+        });
+    });
+</script>
+</body>
+</html>
