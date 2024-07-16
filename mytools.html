@@ -105,7 +105,7 @@
             const toolName = document.getElementById('toolName').value;
             const toolCategory = document.getElementById('toolCategory').value;
             const user = JSON.parse(localStorage.getItem('user'));
-            const userId = user ? user.userId : null;
+            const userId = user ? user.email : null;
 
             if (!userId) {
                 alert('User not logged in');
