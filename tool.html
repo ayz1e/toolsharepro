@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Details</title>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./assets/css/adminlte.css">
+    <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/stylerounded.css">
+    <style>
+        .tool-card {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f1f1f1;
+        }
+        .tool-card h5 {
+            margin-top: 15px;
+            font-size: 1.25rem;
+        }
+        .tool-card p {
+            margin: 10px 0;
+        }
+        .tool-card .username {
+            font-size: 0.875rem;
+            color: #666;
+        }
+        .reserve-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Navbar and Sidebar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- The rest of your content -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Tool Details</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Tool Details</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="tool-card" id="tool-card">
+                    <h5>Loading...</h5>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+<script src="./assets/js/loadNavbar.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', async function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const toolId = urlParams.get('id');
+
+        try {
+            const response = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/getTool?id=${toolId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                const tool = data.tool;
+                const toolCard = document.getElementById('tool-card');
+                toolCard.innerHTML = `
+                    <h5>${tool.name}</h5>
+                    <p class="username">Listed by: ${tool.username}</p>
+                    <p>Category: ${tool.category}</p>
+                    <p>Description: ${tool.description}</p>
+                    <p>Price: $${tool.price}</p>
+                    <a href="#" class="reserve-button">Reserve</a>
+                `;
+            } else {
+                console.error('Failed to fetch tool:', data.message);
+            }
+        } catch (error) {
+            console.error('Request failed:', error);
+        }
+    });
+</script>
+</body>
+</html>
