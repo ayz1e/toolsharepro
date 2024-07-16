@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Category</title>
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/adminlte.css">
+    <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
+    <style>
+        .tool-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .tool-card {
+            width: 300px;
+            margin: 15px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .tool-card h5 {
+            margin: 10px 0;
+            font-size: 1.25rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Navbar and Sidebar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0" id="category-title">Tool Category</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
+                            <li class="breadcrumb-item active">Tool Category</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="tool-list" id="tool-list"></div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+<script src="./assets/js/loadNavbar.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get('category');
+        document.getElementById('category-title').textContent = category + ' Tools';
+
+        fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/getTools?category=${category}`)
+            .then(response => response.json())
+            .then(data => {
+                const toolList = document.getElementById('tool-list');
+                data.tools.forEach(tool => {
+                    const toolCard = document.createElement('div');
+                    toolCard.className = 'tool-card';
+                    toolCard.innerHTML = `<h5>${tool.name}</h5>`;
+                    toolList.appendChild(toolCard);
+                });
+            })
+            .catch(error => console.error('Error fetching tools:', error));
+    });
+</script>
+</body>
+</html>
