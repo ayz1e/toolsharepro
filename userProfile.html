@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <!-- Ionicons -->
@@ -127,8 +126,8 @@
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(responseText, "application/xml");
 
-            const city = xmlDoc.getElementsByTagName("city")[0]?.textContent || '';
-            const state = xmlDoc.getElementsByTagName("state")[0]?.textContent || '';
+            const city = xmlDoc.getElementsByTagName("City")[0]?.textContent || '';
+            const state = xmlDoc.getElementsByTagName("State")[0]?.textContent || '';
 
             return { city, state };
         } catch (error) {
@@ -204,7 +203,7 @@
             }
 
             if (zipcode.length !== 5) {
-                alert('zipcode length is not 5');
+                alert('Zipcode length is not 5');
                 return;
             }
 
