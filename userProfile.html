@@ -138,11 +138,14 @@
     }
 
     async function fetchUserDetails(email) {
+        const user = JSON.parse(localStorage.getItem('user'));
+            const sessionToken = user.sessionToken;
         try {
-            const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/getUserDetails', {
+            const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/auth/getUserDetails', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${sessionToken}`
                 },
                 body: JSON.stringify({ email }),
             });
@@ -261,12 +264,17 @@
         });
 
         document.getElementById('delete-account-btn').addEventListener('click', async function() {
+
+            const user = JSON.parse(localStorage.getItem('user'));
+            const sessionToken = user.sessionToken;
+            
             if (confirm("Are you sure you'd like to delete your account?")) {
                 try {
-                    const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/deleteUser', {
+                    const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/auth/deleteUser', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${sessionToken}`
                         },
                         body: JSON.stringify({ email: user.email }),
                     });
