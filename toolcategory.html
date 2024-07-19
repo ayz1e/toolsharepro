@@ -77,9 +77,12 @@
     document.addEventListener('DOMContentLoaded', function() {
         const params = new URLSearchParams(window.location.search);
         const category = params.get('category');
+        const user = JSON.parse(localStorage.getItem('user'));
+        const sessionToken = user.sessionToken;
+        
         document.getElementById('category-title').textContent = category + ' Tools';
 
-        fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/getTools?category=${category}`)
+        fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/auth/getTools?category=${category}`)
             .then(response => response.json())
             .then(data => {
                 const toolList = document.getElementById('tool-list');
