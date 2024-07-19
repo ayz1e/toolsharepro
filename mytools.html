@@ -102,9 +102,10 @@
 <script>
     document.addEventListener('DOMContentLoaded', async function () {
         const user = JSON.parse(localStorage.getItem('user'));
+            const sessionToken = user.sessionToken;
         const fetchUserTools = async () => {
             try {
-                const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/getUserTools', {
+                const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/auth/getUserTools', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -129,10 +130,12 @@
         };
         document.getElementById('add-tool-form').addEventListener('submit', async function (event) {
             event.preventDefault();
+            const user = JSON.parse(localStorage.getItem('user'));
+            const sessionToken = user.sessionToken;
             const toolName = document.getElementById('tool-name').value;
             const toolCategory = document.getElementById('tool-category').value;
             try {
-                const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/addTool', {
+                const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/auth/addTool', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -154,8 +157,10 @@
         document.getElementById('remove-tool-form').addEventListener('submit', async function (event) {
             event.preventDefault();
             const toolName = document.getElementById('remove-tool-name').value;
+            const user = JSON.parse(localStorage.getItem('user'));
+            const sessionToken = user.sessionToken;
             try {
-                const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/removeTool', {
+                const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/auth/removeTool', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
