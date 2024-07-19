@@ -239,6 +239,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ${user.sessionToken}'
                     },
                     body: JSON.stringify(updates),
                 });
