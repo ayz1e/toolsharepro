@@ -139,8 +139,8 @@
                 return;
             }
 
-            if (zipcode.length !== 5) {
-                alert('Zipcode length is not 5');
+            if (!validateZipcode(zipcode) {
+                alert('Zipcode must be exactly 5 digits');
                 return;
             }
 
