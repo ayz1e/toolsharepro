@@ -101,42 +101,6 @@
 <script src="./assets/js/verifyAuth.js"></script>
 <script src="./assets/js/loadNavbar.js"></script>
 <script>
-    async function getCityState(zipCode) {
-        try {
-            const userId = '811U6SCDAR409'; // Replace with your USPS API User ID
-            const requestXml = `
-                <CityStateLookupRequest USERID="${userId}">
-                    <ZipCode ID="0">
-                        <Zip5>${zipCode}</Zip5>
-                    </ZipCode>
-                </CityStateLookupRequest>
-            `;
-        
-            const response = await fetch('https://secure.shippingapis.com/ShippingAPI.dll', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    API: 'CityStateLookup',
-                    XML: requestXml,
-                })
-            });
-        
-            const responseText = await response.text();
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(responseText, "application/xml");
-
-            const city = xmlDoc.getElementsByTagName("City")[0]?.textContent || '';
-            const state = xmlDoc.getElementsByTagName("State")[0]?.textContent || '';
-
-            return { city, state };
-        } catch (error) {
-            console.error('Error fetching city and state:', error);
-            return { city: '', state: '' };
-        }
-    }
-
     async function fetchUserDetails(email) {
         const user = JSON.parse(localStorage.getItem('user'));
             const sessionToken = user.sessionToken;
@@ -183,15 +147,19 @@
             if (userDetails) {
                 document.getElementById('username').value = userDetails.username || '';
                 document.getElementById('zipcode').value = userDetails.zipcode || '';
-
-                // Fetch and populate city and state based on the Zipcode
-                if (userDetails.zipcode) {
-                    const location = await getCityState(userDetails.zipcode);
-                    document.getElementById('city').value = location.city;
-                    document.getElementById('state').value = location.state;
-                }
+                document.getElementById('city').value = userDetails.city || '';
+                document.getElementById('state').value = userDetails.state || '';
             }
         }
+
+        document.getElementById('zipcode').addEventListener('blur', async function() {
+            const zipcode = document.getElementById('zipcode').value;
+            if (zipcode.length === 5) {
+                const location = await getCityState(zipcode);
+                document.getElementById('city').value = location.city;
+                document.getElementById('state').value = location.state;
+            }
+        });
         
         document.getElementById('zipcode').addEventListener('blur', async function() {
             const zipcode = document.getElementById('zipcode').value;
