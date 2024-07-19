@@ -114,6 +114,11 @@
     return regex.test(password);
     }
 
+    function validateZipcode(zipcode) {
+        const regex = /^\d{5}$/;
+        return regex.test(zipcode);
+    }
+
         
         document.getElementById('registrationForm').addEventListener('submit', async function(event) {
             event.preventDefault();
