@@ -207,7 +207,8 @@
             const confirmPassword = document.getElementById('confirm-password').value;
             const username = document.getElementById('username').value;
             const zipcode = document.getElementById('zipcode').value;
-
+            
+            const user = JSON.parse(localStorage.getItem('user'));
             const sessionToken = user.sessionToken;
 
             if (password && !validatePassword(password)) {
