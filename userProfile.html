@@ -160,6 +160,11 @@
         }
     }
 
+    function validatePassword(password) {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
+    }
+
     document.addEventListener('DOMContentLoaded', async function() {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user) {
@@ -198,8 +203,18 @@
             const username = document.getElementById('username').value;
             const zipcode = document.getElementById('zipcode').value;
 
+            if (password && !validatePassword(password)) {
+                alert('Password must contain 1 uppercase, 1 lowercase, 1 special character, 1 number, and be at least 8 digits.');
+                return;
+            }
+            
             if (password !== confirmPassword) {
                 alert('Passwords do not match');
+                return;
+            }
+
+            if (zipcode.length !== 5) {
+                alert('Zipcode length must be 5 digits');
                 return;
             }
 
