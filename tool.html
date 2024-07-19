@@ -88,6 +88,9 @@
     document.addEventListener('DOMContentLoaded', async function () {
         const urlParams = new URLSearchParams(window.location.search);
         const toolId = urlParams.get('id');
+        const user = JSON.parse(localStorage.getItem('user'));
+        const sessionToken = user.sessionToken;
+
         console.log('Fetched tool ID:', toolId); // Debugging line
 
         try {
