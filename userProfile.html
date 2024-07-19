@@ -165,6 +165,11 @@
     return regex.test(password);
     }
 
+    function validateZipcode(zipcode) {
+        const regex = /^\d{5}$/;
+        return regex.test(zipcode);
+    }
+
     document.addEventListener('DOMContentLoaded', async function() {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user) {
@@ -213,8 +218,8 @@
                 return;
             }
 
-            if (zipcode.length !== 5) {
-                alert('Zipcode length must be 5 digits');
+            if (!validateZipcode(zipcode) {
+                alert('Zipcode must be exactly 5 digits');
                 return;
             }
 
