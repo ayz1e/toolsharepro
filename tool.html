@@ -92,7 +92,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', async function() {
         const urlParams = new URLSearchParams(window.location.search);
-        const toolId = params.get('id');
+        const toolId = urlParams.get('id');
         const user = JSON.parse(localStorage.getItem('user'));
         const sessionToken = user ? user.sessionToken : null;
 
