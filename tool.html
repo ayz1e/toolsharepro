@@ -106,9 +106,9 @@
 
         try {
             const response = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/auth/getTool?id=${toolId}`, {
-               // method: 'GET',
+                method: 'GET',
                 headers: {
-                    //'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${sessionToken}`
                 }
             });
