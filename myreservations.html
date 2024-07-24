@@ -1,59 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Reservations</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <link rel="stylesheet" href="./assets/css/adminlte.css">
+    <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/stylerounded.css">
     <style>
         #calendar {
             max-width: 900px;
             margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
         }
     </style>
 </head>
-<body>
-    <h1>My Reservations</h1>
-    <div id="calendar"></div>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <div id="navbar-container"></div>
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">My Reservations</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">My Reservations</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="content">
+            <div class="container">
+                <div id="calendar"></div>
+            </div>
+        </section>
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const user = JSON.parse(localStorage.getItem('user'));
-            const sessionToken = user.sessionToken;
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+<script src="./assets/js/loadNavbar.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const sessionToken = user.sessionToken;
 
-            fetch('https://d1-prod.ksrhinebolt.workers.dev/api/auth/getUserReservations', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${sessionToken}`
-                }
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch reservations: ${response.status} ${response.statusText}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    const reservations = data.reservations;
-                    const calendarEl = document.getElementById('calendar');
-                    const calendar = new FullCalendar.Calendar(calendarEl, {
-                        initialView: 'dayGridMonth',
-                        events: reservations.map(reservation => ({
-                            title: 'Reserved',
-                            start: reservation.reservationDate,
-                            color: 'red'
-                        }))
-                    });
-                    calendar.render();
-                } else {
-                    alert('Failed to fetch reservations: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Request failed:', error);
-                alert('Request failed: ' + error.message);
-            });
+        // Load Navbar
+        loadNavbar();
+
+        fetch('https://d1-prod.ksrhinebolt.workers.dev/api/auth/getUserReservations', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${sessionToken}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to fetch reservations: ${response.status} ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                const reservations = data.reservations;
+                const calendarEl = document.getElementById('calendar');
+                const calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    events: reservations.map(reservation => ({
+                        title: 'Reserved',
+                        start: reservation.reservationDate,
+                        color: 'red'
+                    }))
+                });
+                calendar.render();
+            } else {
+                alert('Failed to fetch reservations: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Request failed:', error);
+            alert('Request failed: ' + error.message);
         });
-    </script>
+    });
+
+    function loadNavbar() {
+        fetch('./navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+    }
+</script>
 </body>
 </html>
