@@ -1,117 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Reservations</title>
-    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@5.10.1/main.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@5.10.1/main.min.css">
-    <script src="https://unpkg.com/@fullcalendar/core@5.10.1/main.min.js"></script>
-    <script src="https://unpkg.com/@fullcalendar/daygrid@5.10.1/main.min.js"></script
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="./assets/css/adminlte.css">
-    <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
-    <link rel="stylesheet" href="./assets/css/stylerounded.css">
-    <script src="./assets/js/verifyAuth.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
     <style>
-        .tool-card {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #f1f1f1;
-        }
-        .tool-card h5 {
-            margin-top: 15px;
-            font-size: 1.25rem;
-        }
-        .tool-card p {
-            margin: 10px 0;
-        }
-        .tool-card .username {
-            font-size: 0.875rem;
-            color: #666;
-        }
-        .reserve-button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            font-size: 1rem;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
         }
     </style>
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-    <!-- Navbar and Sidebar Container -->
-    <div id="navbar-container"></div>
+<body>
+    <h1>My Reservations</h1>
+    <div id="calendar"></div>
 
-    <div id="reservations-list"></div>
-    <div id="calendar-view"></div>
-<script src="./assets/js/loadNavbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', async function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const user = JSON.parse(localStorage.getItem('user'));
             const sessionToken = user.sessionToken;
 
-            const response = await fetch('https://your-api-url/api/auth/getUserReservations', {
-                method: 'POST',
+            fetch('https://d1-prod.ksrhinebolt.workers.dev/api/auth/getUserReservations', {
+                method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${sessionToken}`
-                },
-                body: JSON.stringify({ userId: user.userId })
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch reservations: ${response.status} ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    const reservations = data.reservations;
+                    const calendarEl = document.getElementById('calendar');
+                    const calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                        events: reservations.map(reservation => ({
+                            title: 'Reserved',
+                            start: reservation.reservationDate,
+                            color: 'red'
+                        }))
+                    });
+                    calendar.render();
+                } else {
+                    alert('Failed to fetch reservations: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Request failed:', error);
+                alert('Request failed: ' + error.message);
             });
-
-            const data = await response.json();
-            if (data.success) {
-                // Display reservations list
-                const reservationsList = document.getElementById('reservations-list');
-                data.reservations.forEach(reservation => {
-                    const div = document.createElement('div');
-                    div.textContent = `Tool ID: ${reservation.toolId}, Date: ${reservation.reservationDate}`;
-                    const cancelBtn = document.createElement('button');
-                    cancelBtn.textContent = 'Cancel';
-                    cancelBtn.onclick = async () => {
-                        await fetch('https://your-api-url/api/auth/deleteReservation', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Authorization': `Bearer ${sessionToken}`
-                            },
-                            body: JSON.stringify({ reservationId: reservation.reservationId })
-                        });
-                        window.location.reload();
-                    };
-                    div.appendChild(cancelBtn);
-                    reservationsList.appendChild(div);
-                });
-
-                // Display calendar view
-                const calendarEl = document.getElementById('calendar-view');
-                const calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth',
-                    events: data.reservations.map(reservation => ({
-                        title: `Tool ID: ${reservation.toolId}`,
-                        start: reservation.reservationDate
-                    }))
-                });
-                calendar.render();
-            } else {
-                alert('Failed to load reservations: ' + data.message);
-            }
         });
     </script>
 </body>
