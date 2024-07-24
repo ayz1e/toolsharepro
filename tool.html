@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./assets/css/adminlte.css">
     <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/stylerounded.css">
+    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@5.10.1/main.min.css">
     <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@5.10.1/main.min.css">
     <script src="https://unpkg.com/@fullcalendar/core@5.10.1/main.min.js"></script>
     <script src="https://unpkg.com/@fullcalendar/daygrid@5.10.1/main.min.js"></script>
@@ -109,6 +110,8 @@
             }
 
             const data = await response.json();
+            console.log('Tool Data:', data);
+
             if (data.success) {
                 const tool = data.tool;
                 const toolCard = document.getElementById('tool-card');
@@ -124,7 +127,7 @@
                 `;
 
                 // Fetch tool availability
-                const availabilityResponse = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/auth/getToolAvailability?id=${toolId}`, {
+                const availabilityResponse = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/auth/getToolAvailability?toolId=${toolId}`, {
                     headers: {
                         'Authorization': `Bearer ${sessionToken}`
                     }
@@ -135,6 +138,8 @@
                 }
 
                 const availabilityData = await availabilityResponse.json();
+                console.log('Availability Data:', availabilityData);
+
                 if (availabilityData.success) {
                     // Display calendar view
                     const calendarEl = document.getElementById('calendar-view');
@@ -165,6 +170,8 @@
                         }
 
                         const data = await response.json();
+                        console.log('Reservation Response:', data);
+
                         if (data.success) {
                             alert('Reservation successful!');
                             window.location.reload();
