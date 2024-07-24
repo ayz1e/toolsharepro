@@ -122,5 +122,75 @@
         }
     });
 </script>
+     <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const params = new URLSearchParams(window.location.search);
+            const toolId = params.get('id');
+            const user = JSON.parse(localStorage.getItem('user'));
+            const sessionToken = user.sessionToken;
+
+            // Fetch tool details
+            const response = await fetch(`https://your-api-url/api/auth/getTool?id=${toolId}`, {
+                headers: {
+                    'Authorization': `Bearer ${sessionToken}`
+                }
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                const tool = data.tool;
+                document.getElementById('tool-details').innerHTML = `
+                    <h1>${tool.name}</h1>
+                    <img src="${tool.imageUrl}" alt="${tool.name}">
+                    <p>Category: ${tool.category}</p>
+                `;
+
+                // Fetch tool availability
+                const availabilityResponse = await fetch(`https://your-api-url/api/auth/getToolAvailability?toolId=${toolId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${sessionToken}`
+                    }
+                });
+
+                const availabilityData = await availabilityResponse.json();
+                if (availabilityData.success) {
+                    // Display calendar view
+                    const calendarEl = document.getElementById('calendar-view');
+                    const calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                        events: availabilityData.availability.map(date => ({
+                            title: 'Available',
+                            start: date.availableDate
+                        }))
+                    });
+                    calendar.render();
+                }
+            } else {
+                alert('Failed to load tool details: ' + data.message);
+            }
+
+            document.getElementById('reserve-button').onclick = async () => {
+                const date = prompt('Enter reservation date (YYYY-MM-DD):');
+                if (date) {
+                    const response = await fetch('https://your-api-url/api/auth/addReservation', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${sessionToken}`
+                        },
+                        body: JSON.stringify({ toolId, userId: user.userId, reservationDate: date })
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        alert('Reservation successful!');
+                        window.location.reload();
+                    } else {
+                        alert('Failed to reserve: ' + data.message);
+                    }
+                }
+            };
+        });
+    </script>
 </body>
 </html>
