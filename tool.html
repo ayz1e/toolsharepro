@@ -14,9 +14,14 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
     <script src="./assets/js/verifyAuth.js"></script>
     <style>
-        .tool-card {
-            max-width: 600px;
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
             margin: 50px auto;
+        }
+        .tool-card {
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 15px;
@@ -49,6 +54,11 @@
         }
         #calendar-view {
             height: 500px; /* Set a height for the calendar */
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding: 20px;
         }
     </style>
 </head>
@@ -72,10 +82,11 @@
             </div>
         </div>
         <section class="content">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="tool-card" id="tool-card">
                     <h5>Loading...</h5>
                 </div>
+                <div id="calendar-view"></div>
             </div>
         </section>
     </div>
@@ -117,8 +128,6 @@
                     <p>Description: ${tool.description}</p>
                     <p>Price: $${tool.price}</p>
                     <img src="${tool.imageUrl}" alt="${tool.name}" style="max-width: 100%; height: auto;">
-                    <div id="calendar-view"></div>
-                    <button id="reserve-button" class="reserve-button">Reserve</button>
                 `;
 
                 // Fetch tool reservations
@@ -143,39 +152,43 @@
                         initialView: 'dayGridMonth',
                         events: reservationsData.reservations.map(date => ({
                             title: 'Reserved',
-                            start: date.reservationDate
-                        }))
+                            start: date.reservationDate,
+                            color: 'red'
+                        })),
+                        dateClick: function(info) {
+                            const date = info.dateStr;
+                            if (confirm(`Do you want to reserve the tool on ${date}?`)) {
+                                fetch('https://d1-prod.ksrhinebolt.workers.dev/api/auth/addReservation', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Authorization': `Bearer ${sessionToken}`
+                                    },
+                                    body: JSON.stringify({ toolId, userId: user.userId, reservationDate: date })
+                                })
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error(`Failed to reserve: ${response.status} ${response.statusText}`);
+                                    }
+                                    return response.json();
+                                })
+                                .then(data => {
+                                    if (data.success) {
+                                        alert('Reservation successful!');
+                                        window.location.reload();
+                                    } else {
+                                        alert('Failed to reserve: ' + data.message);
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Reservation request failed:', error);
+                                    alert('Reservation request failed: ' + error.message);
+                                });
+                            }
+                        }
                     });
                     calendar.render();
                 }
-
-                document.getElementById('reserve-button').onclick = async () => {
-                    const date = prompt('Enter reservation date (YYYY-MM-DD):');
-                    if (date) {
-                        const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/auth/addReservation', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Authorization': `Bearer ${sessionToken}`
-                            },
-                            body: JSON.stringify({ toolId, userId: user.userId, reservationDate: date })
-                        });
-
-                        if (!response.ok) {
-                            throw new Error(`Failed to reserve: ${response.status} ${response.statusText}`);
-                        }
-
-                        const data = await response.json();
-                        console.log('Reservation Response:', data);
-
-                        if (data.success) {
-                            alert('Reservation successful!');
-                            window.location.reload();
-                        } else {
-                            alert('Failed to reserve: ' + data.message);
-                        }
-                    }
-                };
             } else {
                 console.error('Failed to fetch tool:', data.message);
                 alert('Failed to fetch tool: ' + data.message);
