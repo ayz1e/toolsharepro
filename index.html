@@ -7,32 +7,90 @@
 <title>ToolShare Pro</title>
 <link href="assets/css/bootstrap-4.4.1.css" rel="stylesheet" type="text/css">
 <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
+<style>
+  body {
+    padding-top: 50px;
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+  }
+  .navbar {
+    background-color: #343a40;
+  }
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffc107 !important;
+  }
+  .nav-link {
+    color: #ffc107 !important;
+  }
+  .home {
+    text-align: center;
+    padding: 100px 0;
+    background: url('assets/images/hardware-store.jpg') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+  }
+  .home h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  .home h2 a {
+    background-color: #ffc107;
+    border: none;
+    font-size: 1.2rem;
+  }
+  .card-header {
+    background-color: #ffc107;
+    color: #343a40;
+  }
+  .card-body {
+    background-color: #fff;
+    color: #343a40;
+  }
+  .contact .card-title {
+    color: #ffc107;
+  }
+  footer {
+    background-color: #343a40;
+    color: #ffc107;
+    padding: 10px 0;
+    text-align: center;
+  }
+</style>
 </head>
 
-<body style="padding-top: 50px">
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"> <a class="navbar-brand" href="index.html#home">ToolShare Pro&nbsp;&nbsp;</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+<body>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark"> 
+  <a class="navbar-brand" href="index.html#home">ToolShare Pro&nbsp;&nbsp;</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> 
+    <span class="navbar-toggler-icon"></span> 
+  </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent1">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a> </li>
-      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> <a class="nav-link" href="#about">Services</a> </li>
-      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> <a class="nav-link" href="#contact">Contact</a> </li>
-	  <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> <a class="nav-link" href="login.html">Login</a> </li>
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> 
+        <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a> 
+      </li>
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> 
+        <a class="nav-link" href="#about">Services</a> 
+      </li>
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> 
+        <a class="nav-link" href="#contact">Contact</a> 
+      </li>
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"> 
+        <a class="nav-link" href="login.html">Login</a> 
+      </li>
     </ul>
   </div>
 </nav>
 <div class="home" id="home">
-  <h1><strong>Tool Sharing Platform</strong><br>
-  Save time.. Save money&nbsp;</h1>
-	
-  <h2><a href="login.html" button type="button" class="btn btn-success" role="button" style="background-color:#343a40">Start Now!</a></h2>
-	
-	
+  <h1><strong>Tool Sharing Platform</strong><br>Save time.. Save money&nbsp;</h1>
+  <h2><a href="login.html" class="btn btn-success" role="button">Start Now!</a></h2>
 </div>
 <div class="page" id="about">
   <div class="container-fluid" id="about-container">
     <div id="accordion1" role="tablist">
-      <div class="card" style="background-color:#343a40">
+      <div class="card">
         <div class="card-header" role="tab" id="headingOne1">
           <h5 class="mb-0"> <a data-toggle="collapse" href="#collapseOne1" role="button" aria-expanded="true" aria-controls="collapseOne1"><strong>About Us</strong></a></h5>
         </div>
@@ -40,7 +98,7 @@
           <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, officia! Necessitatibus delectus sed dicta corrupti voluptatibus, omnis eius vel ab magni nemo, incidunt esse! Quod!</div>
         </div>
       </div>
-      <div class="card" style="background-color:#343a40">
+      <div class="card">
         <div class="card-header" role="tab" id="headingTwo1">
           <h5 class="mb-0"> <a class="collapsed" data-toggle="collapse" href="#collapseTwo1" role="button" aria-expanded="false" aria-controls="collapseTwo1"><strong>Renters Guarantee</strong></a></h5>
         </div>
@@ -48,29 +106,23 @@
           <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, officia! Necessitatibus delectus sed dicta corrupti voluptatibus, omnis eius vel ab magni nemo, incidunt esse! Quod!</div>
         </div>
       </div>
-      <div class="card" style="background-color:#343a40">
+      <div class="card">
         <div class="card-header" role="tab" id="headingThree1">
           <h5 class="mb-0"> <a class="collapsed" data-toggle="collapse" href="#collapseThree1" role="button" aria-expanded="false" aria-controls="collapseThree1"><strong>Owners Protection</strong></a></h5>
         </div>
         <div id="collapseThree1" class="collapse show" role="tabpanel" aria-labelledby="headingThree1" data-parent="#accordion1">
-          <div class="card-body dropdown">
-			  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, officia! Necessitatibus delectus sed dicta corrupti voluptatibus, omnis eius vel ab magni nemo, incidunt esse! Quod!
-			</div>
-			</div>
+          <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, officia! Necessitatibus delectus sed dicta corrupti voluptatibus, omnis eius vel ab magni nemo, incidunt esse! Quod!</div>
         </div>
       </div>
     </div>
   </div>
-
-	
-	
-	<div class="page" id="contact">
+</div>
+<div class="page" id="contact">
   <section> <br>
     <div class="row">
       <div class="col-xl-6">
         <div class="container-fluid">
           <h5 class="card-title">Contact Us</h5>
-
           <form action="" method="POST" name="contactForm" id="contactForm">
             <div class="form-group">
               <fieldset>
@@ -83,16 +135,15 @@
               </fieldset>
               <fieldset>
                 <label for="phone"></label>
-                <input type="textbox" class="form-control" name="phone" required id="phone" placeholder="Phone Number" tabindex="3">
+                <input type="text" class="form-control" name="phone" required id="phone" placeholder="Phone Number" tabindex="3">
               </fieldset>
               <fieldset>
                 <label for="message"></label>
-                <textarea class= "form-control" name="message" required id="message" placeholder="Type your message here..." tabindex="4"></textarea>
+                <textarea class="form-control" name="message" required id="message" placeholder="Type your message here..." tabindex="4"></textarea>
               </fieldset>
             </div>
             <button name="submit" type="submit" class="btn btn-primary">Submit</button>
           </form>
-			
           <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script> 
           <script src="./assets/js/const.js"></script> 
         </div>
@@ -104,19 +155,14 @@
             <p class="card-text">mail@tool-share.pro</p>
             <h5 class="card-title"><strong>Mailing Address</strong></h5>
             <p class="card-text">State College, PA&nbsp;</p>
-
-			  <h5 class="card-title"><strong>Phone</strong></h5>
-			  <p class="card-text">(814) 123-4567</p>
-
-
+            <h5 class="card-title"><strong>Phone</strong></h5>
+            <p class="card-text">(814) 123-4567</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 </div>
-	
-
 <script src="./assets/js/jquery-3.4.1.min.js"></script> 
 <script src="./assets/js/popper.min.js"></script> 
 <script src="./assets/js/bootstrap-4.4.1.js"></script>
