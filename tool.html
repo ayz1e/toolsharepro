@@ -136,7 +136,7 @@
             const sessionToken = user.sessionToken;
 
             // Fetch tool details
-            const response = await fetch(`https://your-api-url/api/auth/getTool?id=${toolId}`, {
+            const response = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/auth/getTool?id=${toolId}`, {
                 headers: {
                     'Authorization': `Bearer ${sessionToken}`
                 }
@@ -152,7 +152,7 @@
                 `;
 
                 // Fetch tool availability
-                const availabilityResponse = await fetch(`https://your-api-url/api/auth/getToolAvailability?toolId=${toolId}`, {
+                const availabilityResponse = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/auth/getToolAvailability?toolId=${toolId}`, {
                     headers: {
                         'Authorization': `Bearer ${sessionToken}`
                     }
@@ -178,7 +178,7 @@
             document.getElementById('reserve-button').onclick = async () => {
                 const date = prompt('Enter reservation date (YYYY-MM-DD):');
                 if (date) {
-                    const response = await fetch('https://your-api-url/api/auth/addReservation', {
+                    const response = await fetch('https://d1-prod.ksrhinebolt.workers.dev/api/auth/addReservation', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
