@@ -125,7 +125,7 @@
                 `;
 
                 // Fetch tool availability
-                const availabilityResponse = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/auth/getToolAvailability?toolId=${toolId}`, {
+                const availabilityResponse = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/auth/getToolAvailability?id=${toolId}`, {
                     headers: {
                         'Authorization': `Bearer ${sessionToken}`
                     }
