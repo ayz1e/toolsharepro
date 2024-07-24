@@ -112,7 +112,9 @@
                     <p>Category: ${tool.category}</p>
                     <p>Description: ${tool.description}</p>
                     <p>Price: $${tool.price}</p>
-                    <a href="#" id="reserve-button" class="reserve-button">Reserve</a>
+                    <div id ="tool-detials"></div>
+                    <div id="calendar-view"></div>
+                    <button id="reserve-button" class="reserve-button">Reserve</button>
                 `;
             } else {
                 console.error('Failed to fetch tool:', data.message);
