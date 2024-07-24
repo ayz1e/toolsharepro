@@ -123,6 +123,7 @@
 
                 // Fetch tool reservations
                 const reservationsResponse = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/auth/getToolReservations?toolId=${toolId}`, {
+                    method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${sessionToken}`
                     }
