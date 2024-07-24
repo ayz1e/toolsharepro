@@ -1,16 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="./assets/js/verifyAuth.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Tools</title>
-    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@5.10.1/main.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@5.10.1/main.min.css">
-    <script src="https://unpkg.com/@fullcalendar/core@5.10.1/main.min.js"></script>
-    <script src="https://unpkg.com/@fullcalendar/daygrid@5.10.1/main.min.js"></script>
+    <title>Dashboard</title>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./assets/css/adminlte.css">
+    <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="./assets/js/verifyAuth.js"></script>
+    <style>
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .category-card {
+            position: relative;
+            width: 250px;
+            height: 150px;
+            margin: 15px;
+            border-radius: 15px;
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+
+        .category-card:hover img {
+            opacity: 0.3;
+        }
+
+        .category-card-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .category-card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .category-card-info {
+            display: none;
+            font-size: 1rem;
+        }
+
+        .category-card:hover .category-card-info {
+            display: block;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .breadcrumb-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: #6c757d;
+        }
+    </style>
 </head>
-<body>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Navbar and Sidebar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- The rest of your content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Tool Categories</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Tool Categories</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Content Header (Page header) -->
+
     <div id="tools-list"></div>
 <script src="./assets/js/loadNavbar.js"></script>
     <script>
