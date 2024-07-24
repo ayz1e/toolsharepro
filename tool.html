@@ -4,123 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tool Details</title>
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="./assets/css/adminlte.css">
-    <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
-    <link rel="stylesheet" href="./assets/css/stylerounded.css">
-    <script src="./assets/js/verifyAuth.js"></script>
-    <style>
-        .tool-card {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #f1f1f1;
-        }
-        .tool-card h5 {
-            margin-top: 15px;
-            font-size: 1.25rem;
-        }
-        .tool-card p {
-            margin: 10px 0;
-        }
-        .tool-card .username {
-            font-size: 0.875rem;
-            color: #666;
-        }
-        .reserve-button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            font-size: 1rem;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@5.10.1/main.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@5.10.1/main.min.css">
+    <script src="https://unpkg.com/@fullcalendar/core@5.10.1/main.min.js"></script>
+    <script src="https://unpkg.com/@fullcalendar/daygrid@5.10.1/main.min.js"></script>
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-    <!-- Navbar and Sidebar Container -->
-    <div id="navbar-container"></div>
+<body>
+    <div id="tool-details"></div>
+    <div id="calendar-view"></div>
+    <button id="reserve-button">Reserve</button>
 
-    <!-- The rest of your content -->
-    <div class="content-wrapper">
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Tool Details</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Tool Details</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <section class="content">
-            <div class="container-fluid">
-                <div class="tool-card" id="tool-card">
-                    <h5>Loading...</h5>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="dist/js/adminlte.min.js"></script>
-<script src="./assets/js/loadNavbar.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', async function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const toolId = urlParams.get('id');
-        const user = JSON.parse(localStorage.getItem('user'));
-        const sessionToken = user.sessionToken;
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const params = new URLSearchParams(window.location.search);
+            const toolId = params.get('id');
+            const user = JSON.parse(localStorage.getItem('user'));
+            const sessionToken = user.sessionToken;
 
-        console.log('Fetched tool ID:', toolId); // Debugging line
-
-        try {
-            const response = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/auth/getTool?id=${toolId}`, {
-                method: 'GET',
+            // Fetch tool details
+            const response = await fetch(`https://your-api-url/api/auth/getTool?id=${toolId}`, {
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${sessionToken}`
-                },
+                }
             });
 
             const data = await response.json();
             if (data.success) {
                 const tool = data.tool;
-                const toolCard = document.getElementById('tool-card');
-                toolCard.innerHTML = `
-                    <h5>${tool.name}</h5>
-                    <p class="username">Listed by: ${tool.username}</p>
+                document.getElementById('tool-details').innerHTML = `
+                    <h1>${tool.name}</h1>
+                    <img src="${tool.imageUrl}" alt="${tool.name}">
                     <p>Category: ${tool.category}</p>
-                    <p>Description: ${tool.description}</p>
-                    <p>Price: $${tool.price}</p>
-                    <a href="#" class="reserve-button">Reserve</a>
                 `;
+
+                // Fetch tool availability
+                const availabilityResponse = await fetch(`https://your-api-url/api/auth/getToolAvailability?toolId=${toolId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${sessionToken}`
+                    }
+                });
+
+                const availabilityData = await availabilityResponse.json();
+                if (availabilityData.success) {
+                    // Display calendar view
+                    const calendarEl = document.getElementById('calendar-view');
+                    const calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                        events: availabilityData.availability.map(date => ({
+                            title: 'Available',
+                            start: date.availableDate
+                        }))
+                    });
+                    calendar.render();
+                }
             } else {
-                console.error('Failed to fetch tool:', data.message);
+                alert('Failed to load tool details: ' + data.message);
             }
-        } catch (error) {
-            console.error('Request failed:', error);
-        }
-    });
-</script>
+
+            document.getElementById('reserve-button').onclick = async () => {
+                const date = prompt('Enter reservation date (YYYY-MM-DD):');
+                if (date) {
+                    const response = await fetch('https://your-api-url/api/auth/addReservation', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${sessionToken}`
+                        },
+                        body: JSON.stringify({ toolId, userId: user.userId, reservationDate: date })
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        alert('Reservation successful!');
+                        window.location.reload();
+                    } else {
+                        alert('Failed to reserve: ' + data.message);
+                    }
+                }
+            };
+        });
+    </script>
 </body>
 </html>
