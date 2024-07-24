@@ -1,16 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="./assets/js/verifyAuth.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Reservations</title>
-    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@5.10.1/main.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@5.10.1/main.min.css">
-    <script src="https://unpkg.com/@fullcalendar/core@5.10.1/main.min.js"></script>
-    <script src="https://unpkg.com/@fullcalendar/daygrid@5.10.1/main.min.js"></script>
+    <title>Tool Details</title>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./assets/css/adminlte.css">
+    <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/stylerounded.css">
+    <script src="./assets/js/verifyAuth.js"></script>
+    <style>
+        .tool-card {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f1f1f1;
+        }
+        .tool-card h5 {
+            margin-top: 15px;
+            font-size: 1.25rem;
+        }
+        .tool-card p {
+            margin: 10px 0;
+        }
+        .tool-card .username {
+            font-size: 0.875rem;
+            color: #666;
+        }
+        .reserve-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+    </style>
 </head>
-<body>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- Navbar and Sidebar Container -->
+    <div id="navbar-container"></div>
+
     <div id="reservations-list"></div>
     <div id="calendar-view"></div>
 <script src="./assets/js/loadNavbar.js"></script>
