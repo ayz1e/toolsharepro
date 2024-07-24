@@ -21,14 +21,19 @@
             max-width: 1200px;
             margin: 50px auto;
         }
-        .tool-card {
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .tool-card, .calendar-card {
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-color: #f1f1f1;
         }
-        .tool-card h5 {
+        .tool-card h5, .calendar-card h5 {
             margin-top: 15px;
             font-size: 1.25rem;
         }
@@ -54,11 +59,6 @@
         }
         #calendar-view {
             height: 500px; /* Set a height for the calendar */
-            border: 1px solid #ddd;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            padding: 20px;
         }
     </style>
 </head>
@@ -86,7 +86,10 @@
                 <div class="tool-card" id="tool-card">
                     <h5>Loading...</h5>
                 </div>
-                <div id="calendar-view"></div>
+                <div class="calendar-card">
+                    <h5>Reservation Calendar</h5>
+                    <div id="calendar-view"></div>
+                </div>
             </div>
         </section>
     </div>
