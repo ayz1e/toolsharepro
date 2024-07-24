@@ -118,7 +118,7 @@
                 const calendar = new FullCalendar.Calendar(calendarEl, {
                     initialView: 'dayGridMonth',
                     events: reservations.map(reservation => ({
-                        title: reservation.toolName || 'No Tool Name', // Ensure title is never undefined
+                        title: reservation.toolName || 'Reservation', // Ensure title is never undefined
                         start: reservation.reservationDate,
                         extendedProps: {
                             toolId: reservation.toolId
