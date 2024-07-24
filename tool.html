@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="./assets/css/adminlte.css">
     <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/stylerounded.css">
-    <link rel="stylesheet" href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.min.css" />
-    <script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
     <script src="./assets/js/verifyAuth.js"></script>
     <style>
         .tool-card {
@@ -133,20 +133,15 @@
 
                 if (availabilityData.success) {
                     // Display calendar view
-                    const calendar = new tui.Calendar('#calendar-view', {
-                        defaultView: 'month',
-                        taskView: false,
-                        scheduleView: ['time']
+                    const calendarEl = document.getElementById('calendar-view');
+                    const calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                        events: availabilityData.availability.map(date => ({
+                            title: 'Available',
+                            start: date.availableDate
+                        }))
                     });
-
-                    calendar.createSchedules(availabilityData.availability.map(date => ({
-                        id: String(date.id),
-                        calendarId: '1',
-                        title: 'Available',
-                        category: 'time',
-                        start: date.availableDate,
-                        end: date.availableDate
-                    })));
+                    calendar.render();
                 }
 
                 document.getElementById('reserve-button').onclick = async () => {
