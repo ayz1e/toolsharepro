@@ -77,7 +77,7 @@ footer {
     padding-top: 5vh;
 }
 #home h2 .btn.btn-success:hover {
-    color: #F8B83E;
+    color: #FF7F11 !important;
 
 
 }
@@ -156,7 +156,7 @@ footer {
 
 
 .mb-0 a:hover {
-    color: #F8B83E !important;
+    color: #FF7F11 !important;
 }
 
 
