@@ -105,6 +105,10 @@
                 },
             });
 
+            if (!response.ok) {
+                throw new Error(`Failed to fetch tool: ${response.status} ${response.statusText}`);
+            }
+
             const data = await response.json();
             if (data.success) {
                 const tool = data.tool;
@@ -126,6 +130,10 @@
                         'Authorization': `Bearer ${sessionToken}`
                     }
                 });
+
+                if (!availabilityResponse.ok) {
+                    throw new Error(`Failed to fetch tool availability: ${availabilityResponse.status} ${availabilityResponse.statusText}`);
+                }
 
                 const availabilityData = await availabilityResponse.json();
                 if (availabilityData.success) {
@@ -153,6 +161,10 @@
                             body: JSON.stringify({ toolId, userId: user.userId, reservationDate: date })
                         });
 
+                        if (!response.ok) {
+                            throw new Error(`Failed to reserve: ${response.status} ${response.statusText}`);
+                        }
+
                         const data = await response.json();
                         if (data.success) {
                             alert('Reservation successful!');
@@ -164,9 +176,11 @@
                 };
             } else {
                 console.error('Failed to fetch tool:', data.message);
+                alert('Failed to fetch tool: ' + data.message);
             }
         } catch (error) {
             console.error('Request failed:', error);
+            alert('Request failed: ' + error.message);
         }
     });
 </script>
