@@ -121,28 +121,28 @@
                     <button id="reserve-button" class="reserve-button">Reserve</button>
                 `;
 
-                // Fetch tool availability
-                const availabilityResponse = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/auth/getToolAvailability?toolId=${toolId}`, {
+                // Fetch tool reservations
+                const reservationsResponse = await fetch(`https://d1-prod.ksrhinebolt.workers.dev/api/auth/getToolReservations?toolId=${toolId}`, {
                     headers: {
                         'Authorization': `Bearer ${sessionToken}`
                     }
                 });
 
-                if (!availabilityResponse.ok) {
-                    throw new Error(`Failed to fetch tool availability: ${availabilityResponse.status} ${availabilityResponse.statusText}`);
+                if (!reservationsResponse.ok) {
+                    throw new Error(`Failed to fetch tool reservations: ${reservationsResponse.status} ${reservationsResponse.statusText}`);
                 }
 
-                const availabilityData = await availabilityResponse.json();
-                console.log('Availability Data:', availabilityData);
+                const reservationsData = await reservationsResponse.json();
+                console.log('Reservations Data:', reservationsData);
 
-                if (availabilityData.success) {
+                if (reservationsData.success) {
                     // Display calendar view
                     const calendarEl = document.getElementById('calendar-view');
                     const calendar = new FullCalendar.Calendar(calendarEl, {
                         initialView: 'dayGridMonth',
-                        events: availabilityData.availability.map(date => ({
-                            title: 'Available',
-                            start: date.availableDate
+                        events: reservationsData.reservations.map(date => ({
+                            title: 'Reserved',
+                            start: date.reservationDate
                         }))
                     });
                     calendar.render();
