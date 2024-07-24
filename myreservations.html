@@ -118,7 +118,7 @@
                 const calendar = new FullCalendar.Calendar(calendarEl, {
                     initialView: 'dayGridMonth',
                     events: reservations.map(reservation => ({
-                        title: reservation.toolName,
+                        title: reservation.toolName || 'No Tool Name', // Ensure title is never undefined
                         start: reservation.reservationDate,
                         extendedProps: {
                             toolId: reservation.toolId
@@ -167,6 +167,21 @@
             }
         }
     });
+
+    function loadNavbar() {
+        fetch('./navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+                const user = JSON.parse(localStorage.getItem('user'));
+                document.getElementById('welcome-user').textContent = `Welcome, ${user.email}`;
+                document.getElementById('logout-button').onclick = function() {
+                    localStorage.removeItem('user');
+                    window.location.href = 'login.html';
+                };
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+    }
 </script>
 </body>
 </html>
