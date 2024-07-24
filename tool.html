@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="./assets/css/adminlte.css">
     <link rel="stylesheet" href="./plugins/fontawesome5/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/stylerounded.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
+    <!-- FullCalendar CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
     <script src="./assets/js/verifyAuth.js"></script>
     <style>
         .tool-card {
@@ -45,6 +46,9 @@
             cursor: pointer;
             text-decoration: none;
             text-align: center;
+        }
+        #calendar-view {
+            height: 500px; /* Set a height for the calendar */
         }
     </style>
 </head>
@@ -113,7 +117,7 @@
                     <p>Description: ${tool.description}</p>
                     <p>Price: $${tool.price}</p>
                     <img src="${tool.imageUrl}" alt="${tool.name}" style="max-width: 100%; height: auto;">
-                    <div id="calendar-view" style="height: 500px;"></div>
+                    <div id="calendar-view"></div>
                     <button id="reserve-button" class="reserve-button">Reserve</button>
                 `;
 
